@@ -94,10 +94,11 @@ This anonymous function should accept up to three arguments: the element, the in
 
 const removeWithAnon = (arr) => {
   arr.forEach(element => {
-    if( num % 3 === 2){
+    if( element % 3 === 2){
       arr.pop();
     }
-  })
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -123,8 +124,8 @@ const createList = (availableItems) => {
     if(element.available){
       groceryList.push(element.name);
     }
-    return groceryList;
   });
+  return groceryList;
 };
 
 
