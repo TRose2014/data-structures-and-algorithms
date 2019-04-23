@@ -33,11 +33,14 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  // Solution code here...
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
-  // Solution code here...
+  for(let i = 0; i < times; i++){
+    callback(arr, num);
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -53,7 +56,7 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const removeOne = (num, arr) => {
-  if (num%3 === 2) {
+  if (num % 3 === 2) {
     arr.pop();
   }
 };
@@ -93,7 +96,6 @@ const removeWithAnon = (arr) => {
   arr.forEach(element => {
     if (num%3 === 2) {
       arr.pop();
-
   }
   return element;
 });
@@ -118,12 +120,13 @@ This function should use forEach to populate your grocery list based on the stor
 const createList = (availableItems) => {
   let groceryList = [];
   availableItems.forEach(function(element){
-    if (element.available){
+    if(element.available){
       groceryList.push(element.name);
     }
-  });
-  return groceryList;
-};
+    return groceryList;
+  })
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7
