@@ -90,10 +90,13 @@ This anonymous function should accept up to three arguments: the element, the in
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithAnon = (arr) => {
-  arr.forEach(function(){
-    
-  });
-};
+  arr.forEach(element => {
+    if (num%3 === 2) {
+      arr.pop();
+
+  }
+  return element;
+});
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -113,10 +116,10 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  const groceryList = [];
-  availableItems.forEach(function(element, index){
-    if (index.available === true){
-      groceryList.push(element);
+  let groceryList = [];
+  availableItems.forEach(function(element){
+    if (element.available){
+      groceryList.push(element.name);
     }
   });
   return groceryList;
@@ -137,21 +140,22 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  arr.forEach(function(element, index){
-    if (index % 3 === 0) {
-      arr.push('Fizz');
+  let results = [];
+  arr.forEach(function(element){
+    if (element % 15 === 0) {
+      results.push('Fizz Buzz');
     }
-    else if (index % 5 === 0) {
-      arr.push('Buzz');
+    else if (element % 5 === 0) {
+      results.push('Buzz');
     }
-    else if (index % 3 === 0 && arr % 5 === 0) {
-      arr.push('Fizz Buzz');
+    else if (element % 3 === 0) {
+      results.push('Fizz');
     }
     else{
-      arr.push(element);
+      results.push(element);
     }
   });
-  return arr;
+  return results;
 };
 
 /* ------------------------------------------------------------------------------------------------
