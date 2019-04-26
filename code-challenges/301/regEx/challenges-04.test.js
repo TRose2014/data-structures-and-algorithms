@@ -26,7 +26,12 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  //Double array when capsArr is return; null when returning caps. Caps is providing correct info on codepen
+  let capsArr = [];
+  let caps = str.match(/[A-Z][a-z]*/g);
+  capsArr.push(caps);
+  return capsArr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -36,7 +41,15 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+
+  return arr.match(/[A-J]/);
+  // let citiesArr = [];
+  // var AJ = /[A-J]/;
+  // var match = arr.match(/[A-J]/);
+  // return match;
+//   if(arr.match(AJ)){
+//     citiesArr.push(arr);
+//   }
 };
 
 /* ------------------------------------------------------------------------------------------------
