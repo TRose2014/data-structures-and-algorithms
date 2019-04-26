@@ -50,11 +50,11 @@ If the user enters any of these four inputs, return true. For any other input, r
 Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
-// const matchMonth = (input) => {
-//   // \b([Oo]ct)
-//   let regEx = /\b([Oo]ct)(ober)?\b/g;
-//   return regEx.test(input);
-// };
+const matchMonth = (input) => {
+  // \b([Oo]ct)
+  let regEx = /\b([Oo]ct)(ober)?\b/g;
+  return regEx.test(input);
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
