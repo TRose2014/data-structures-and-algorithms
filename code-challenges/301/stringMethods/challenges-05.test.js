@@ -69,6 +69,7 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  //count spaces before item [11] && [8] && [10]; start with 8 and increment perhaps; use array.indexOf to find indexes of specific words
   return result;
 };
 
