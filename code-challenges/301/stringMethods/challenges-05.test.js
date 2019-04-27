@@ -68,8 +68,11 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  // Solution code here...
-  //count spaces before item [11] && [8] && [10]; start with 8 and increment perhaps; use array.indexOf to find indexes of specific words
+
+  for(let i = 0; i < recipe.ingredients.length; i++){
+    let answer = recipe.ingredients[i].slice(recipe.ingredients[i].indexOf(' ', 5));
+    result.push(answer.slice(1));
+  }
   return result;
 };
 
