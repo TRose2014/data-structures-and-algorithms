@@ -102,15 +102,9 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 
 const sortNumbersByLength = (arr) => {
   arr.sort((a, b) => {
-    // if(a.length < b.length){
-    //   return -1;
-    // }else if(a.length > b.length){
-    //   return 1;
-    // }else if(a.length === b.length){
-    //   return 0;
-    // }
-
-    return b-a ;
+    var numA = a.toString();
+    var numB = b.toString();
+    return numA.length-numB.length;
   });
   return arr;
 };
@@ -158,17 +152,17 @@ const sortPeopleBetter = (arr) => {
   arr.sort((a, b) =>{
     if(a.lastName < b.lastName){
       return -1;
-    }else if(a.lastName > b.lastName){
+
+    }if(a.lastName > b.lastName){
       return 1;
-    }else if(a.lastName === b.lastName){
-      if(a.firstName.toUpperCase() > b.firstName.toUpperCase()){
-        return 1;
-      }
-    }else if(a.lastName === b.lastName && a.firstName === b.firstName){
-      if(a.age < b.age){
+    }if(a.lastName === b.lastName){
+      if(a.firstName < b.firstName){
         return -1;
       }
-    }
+    }if(a.firstName === b.firstName){
+      return a.age - b.age;
+      }
+      return 0;
   });
   return arr;
 };
