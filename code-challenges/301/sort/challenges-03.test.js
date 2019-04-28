@@ -152,6 +152,7 @@ const sortPeopleBetter = (arr) => {
   arr.sort((a, b) =>{
     if(a.lastName < b.lastName){
       return -1;
+
     }if(a.lastName > b.lastName){
       return 1;
     }if(a.lastName === b.lastName){
