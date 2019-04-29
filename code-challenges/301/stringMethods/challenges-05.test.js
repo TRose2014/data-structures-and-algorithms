@@ -11,6 +11,7 @@ For example, if the input is 'Welcome', the output will be:
 
 const howMuchPencil = (str) => {
   let result = [];
+  
   for(let i = 0; i <= str.length; i++){
     result.push(str.slice([i]));
   }
@@ -85,6 +86,7 @@ You may also use other string or array methods.
 const splitFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  // (\d+\s+\w+[a-z])((-)+\w+[a-z])?
   return result;
 };
 
@@ -97,7 +99,11 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 
 const stepActions = (recipe) => {
   let result = [];
-  // Solution code here...
+
+  for(let i = 0; i < recipe.steps.length; i++){
+    let answer =  recipe.steps[i].split(' ');
+    result.push(answer[0]);
+  }
   return result;
 };
 
