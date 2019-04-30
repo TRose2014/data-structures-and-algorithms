@@ -85,7 +85,17 @@ hasChildrenValues(characters, 'Eddard') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
+  let hasChildren = true;
+  arr.forEach(element => {
+    if(element.name === character){
+      if(Object.values(element)[2].length === 0){
+        hasChildren = false;
+      }else{
+        hasChildren = true;
+      }
+    }
+  });
+  return hasChildren;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -105,6 +115,7 @@ Write a function named totalCharacters that takes in an array and returns the nu
 
 const totalCharacters = (arr) => {
   // Solution code here...
+  //put adults in one var children in another push to an empty array and count the eles in the array
 };
 
 /* ------------------------------------------------------------------------------------------------
