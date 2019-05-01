@@ -21,8 +21,11 @@ Write a function named forEachTwoToThe that produces the same output as your for
 ------------------------------------------------------------------------------------------------ */
 
 const forEachTwoToThe = (arr) => {
-  arr.map(n => n.charCodeAt());
-  return arr;
+  let result = [];
+  arr.forEach((element, index) => {
+    result.push(Math.pow(2, arr[index]));
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -42,6 +45,7 @@ For example: charCode(['h','i']) returns [104, 105].
 ------------------------------------------------------------------------------------------------ */
 
 const charCode = (arr) => arr.map(n => n.charCodeAt());
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
