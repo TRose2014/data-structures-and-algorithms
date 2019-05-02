@@ -92,9 +92,13 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 ------------------------------------------------------------------------------------------------ */
 
 const getStatName = (arr, minBaseStat) => {
-  // Solution code here...
-};
+  let attackObj = arr.filter((element) => {
+    return element.baseStat > minBaseStat;
+  });
 
+  let answer = attackObj.map(n => n.stat.name);
+  return answer;
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 Write a function named getCharactersWithoutChildren that, given the array of characters, below, uses filter to return an array of all characters without children.
