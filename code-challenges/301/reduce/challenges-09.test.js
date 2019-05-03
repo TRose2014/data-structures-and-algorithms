@@ -78,7 +78,7 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (arr) => {
-  // Solution code here...
+  return arr.split('').reduce((acc, curr) => curr + acc);
 };
 
 /* ------------------------------------------------------------------------------------------------
