@@ -85,8 +85,13 @@ You may also use other string or array methods.
 
 const splitFoods = (recipe) => {
   let result = [];
-  // Solution code here...
-  // (\d+\s+\w+[a-z])((-)+\w+[a-z])?
+ 
+  recipe.ingredients.forEach(ingredient => {
+    let item = ingredient.split(' ').splice (2, 3).join(' ');
+    result.push(item);
+
+  });
+
   return result;
 };
 
