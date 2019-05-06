@@ -149,14 +149,11 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
-  let sum = 0
-  let arrayLength = arr.length;
-  arr.reduce( (acc, curr, ind, arr) => {
-    
-    sum += curr;
-    
-  },0);
-  return Math.floor(sum/arrayLength);
+  let result = arr.reduce((acc, curr) => {
+    acc.sum += curr;
+    return acc;
+  }, {count:0, sum:0});
+  return result.sum/arr.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
