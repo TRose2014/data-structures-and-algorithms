@@ -20,6 +20,9 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
+  // 9am 10am 11am 
+  // 17 18      23
+  //cookieStores are the coloumn. hoursOpen are the rows
 
 };
 
@@ -70,7 +73,11 @@ The top row of the board is considered row zero and row numbers increase as they
 ------------------------------------------------------------------------------------------------ */
 
 const battleship = (board, row, col) => {
-  //  Solution code here...
+  if (board[row][col] === '#'){
+    return 'hit';
+  }else{
+    return 'miss';
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
