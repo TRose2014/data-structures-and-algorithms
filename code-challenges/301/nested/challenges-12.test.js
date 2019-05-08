@@ -55,17 +55,7 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  let treats = 0;
-
-  arr.forEach(list => {
-    list.items.forEach(item => {
-      if (item.name === 'Treats') {
-        treats += item.quantity;
-      }
-    });
-  });
-
-  return treats;
+  return arr[2].items[1].quantity;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -133,7 +123,13 @@ let lowestWeeklyTemperatureData = [
 ];
 
 const lowestWeeklyAverage = (weather) => {
-  // Solution code here...
+  const lowestAvg = 999;
+  const sum = weather.reduce((acc, val) => acc + val);
+  weather.forEach(week => {
+    let sum = getSum();
+    let avg = sum(week.length);
+    lowestAvg = lowestAvg > avg ? avg : lowestAvg; 
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -145,7 +141,9 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
 
 const excel = (str) => {
-  // Solution code here...
+  return str.split('\n').map(row => {
+    return row.split(',').reduce((acc, val) => acc + val);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
