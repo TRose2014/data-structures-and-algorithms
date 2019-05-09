@@ -34,7 +34,15 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  let answer = [];
+  data.forEach((element, index) => {
+    let obj = {
+      sales: element + ' cookies',
+      time: hours[index]
+    };
+    answer.push(obj);
+  });
+  return answer;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -87,7 +95,13 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 ------------------------------------------------------------------------------------------------ */
 
 const calculateProduct = (numbers) => {
-  // Solution code here...
+  let result = 1;
+  numbers.map((accumulator) => {
+    accumulator.forEach(element => {
+      result *= element;
+    });
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
