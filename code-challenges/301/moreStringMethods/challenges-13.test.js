@@ -27,8 +27,7 @@ const findHappiness = (arr) => {
   arr.forEach((happy, index) => {
     if(arr[index].includes(':)') === true){
       result.push(arr[index]);
-    }else
-      return false;
+    }
   });
   return result;
 };
