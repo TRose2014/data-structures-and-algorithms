@@ -164,7 +164,8 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 
 const excel = (str) => {
   return str.split('\n').map(row => {
-    return row.split(',').reduce((acc, val) => acc + val);
+    let numbers = row.split(',').map(Number);
+    return numbers.reduce(( acc, val) => acc + val);
   });
 };
 
