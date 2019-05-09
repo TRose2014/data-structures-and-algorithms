@@ -7,7 +7,13 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 ------------------------------------------------------------------------------------------------ */
 
 const firstLetters = (arr) => {
-  // Solution code here...
+  let result = [];
+
+  arr.forEach(word => {
+    result.push(word.charAt(0));
+
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
