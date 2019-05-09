@@ -39,7 +39,6 @@ const salesData = (hours, data) => {
     };
     formattedData.push(objTemp);
   });
-
   return formattedData;
 };
 
