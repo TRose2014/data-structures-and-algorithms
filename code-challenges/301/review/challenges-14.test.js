@@ -113,8 +113,9 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-// Solution code here...
 //regex for https:// test for it
+  let regEx = /^https:\/\//;
+  return regEx.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
