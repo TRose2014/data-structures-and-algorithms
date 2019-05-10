@@ -99,8 +99,20 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
   //compare price; if price a < b && a < c push to array; if b < c push to array then push c
+  //or so a sort
+  let result = arr;
+
+  result.sort((a, b) => {
+    if(a[property] < b[property]){
+      return -1;
+    }if(a[property] > b[property]){
+      return 1;
+    }else{
+      return 0;
+    }
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
