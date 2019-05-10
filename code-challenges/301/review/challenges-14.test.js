@@ -7,7 +7,10 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  //foreach element, at their index 0 toUpperCase
+  return arr.map(element => {
+    return element[0].toUpperCase() + element.slice(1);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -80,6 +83,7 @@ let starWarsData = [{
 
 let biggerThanLuke = (arr) => {
   // Solution code here...
+  //if mass > Luke's push to new array and insert - into array instead of spaces
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -96,6 +100,7 @@ This data could be sorted by name or price.
 
 const sortBy = (property, arr) => {
   // Solution code here...
+  //compare price; if price a < b && a < c push to array; if b < c push to array then push c
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -109,6 +114,7 @@ https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
 // Solution code here...
+//regex for https:// test for it
 };
 
 /* ------------------------------------------------------------------------------------------------
