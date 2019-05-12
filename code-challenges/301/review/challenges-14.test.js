@@ -82,8 +82,12 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
   //if mass > Luke's push to new array and insert - into array instead of spaces
+  return arr.reduce((acc, val) => {if(Number(val.mass) > Number(arr[0].mass)){
+    acc.push(val.name);
+  }
+  return acc;
+  }, []).join(' - ');
 };
 
 /* ------------------------------------------------------------------------------------------------
