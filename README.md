@@ -4,4 +4,5 @@
 
 
 # 401
-[Array Reverse](https://github.com/TRose2014/data-structures-and-algorithms/tree/master/code-challenges/401/arrayReverse)
+[Array Reverse](https://github.com/TRose2014/data-structures-and-algorithms/tree/master/code-challenges/401/arrayReverse)<br/>
+[Array Shift](https://github.com/TRose2014/data-structures-and-algorithms/tree/master/code-challenges/401/arrayShift)
