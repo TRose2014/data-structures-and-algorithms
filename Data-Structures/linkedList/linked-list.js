@@ -55,35 +55,6 @@ class LinkedList {
 
 module.exports = exports = LinkedList;
 
-// console.log(list.head);
-// list.insert(7);
-// list.insert(5);
-// console.log(list.head);
-list.insert(2);
-// console.log(list.head);
-// list.includes(3);
-// console.log(list.head);
-// console.log(list.add(4));
-// console.log(list.add(7));
-// console.log(list.add(2));
-list.add(4);
-list.add(1);
-list.add(2);
-// list.includes(4);
-// console.log(list.includes(4));
-console.log(list);
-// console.log(list.includes(2));
-
-
-
-// const head = new Node(2);
-// console.log(head);
-
-// const nodeTwo = head.ref = new Node (4);
-// console.log(nodeTwo);
-
-// head.ref.ref = new Node (6);
-
 // let current = head;
 // console.log(current);
 // while(current !== null){
