@@ -1,4 +1,5 @@
 'use strict';
+// eslint-disable-next-line no-redeclare
 class Node{
   constructor (value){
     this.value = value;
@@ -15,7 +16,7 @@ class LinkedList {
   insert(value){
     let newNode = new Node(value);
     this.head = newNode;
-    
+
   }
   add(value){
     if(this.head === null){
@@ -50,7 +51,9 @@ class LinkedList {
   }
 }
 
-const list = new LinkedList();
+
+
+module.exports = exports = LinkedList;
 
 // console.log(list.head);
 // list.insert(7);
