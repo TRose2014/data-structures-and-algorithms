@@ -15,55 +15,39 @@ class LinkedList {
   }
   insert(value){
     let newNode = new Node(value);
+    if(this.head){
+      newNode.next = this.head;
+    }
     this.head = newNode;
-
+    this.length++;
   }
-  add(value){
-    if(this.head === null){
-      this.head = new Node(value);
-      return this;
-    }else{
-      let currentNode = this.head;
 
-      while(currentNode.next){
-        currentNode = currentNode.next;
-      }
-      currentNode.next = new Node(value);
-      return this;
-    }
-    // this.length++;
-  }
   includes(value){
-    if(this.head.value === value){
-      return true;
-    }else{
-      let currentNode = this.head;
-      while(currentNode.next !== null){
-        if(currentNode.value === value){
-          return true;
-        }
+    while(this.head.next !== null){
+      if(this.head.value === value){
+        return true;
       }
-      return false;
+      this.head = this.head.next;
     }
+    return false;
   }
+
   print(){
     console.log(this.head);
   }
 }
 
 let list = new LinkedList();
-list.insert(7);
-console.log(list.insert(2));
+list.insert(3);
+list.insert(5);
+list.insert(1);
+console.log(list);
+console.log(list.includes(3));
 
 
 module.exports = exports = LinkedList;
 
-// let current = head;
-// console.log(current);
-// while(current !== null){
-//   console.log(current.value);
-//   current = current.next;
-// }
 
 
-//https://www.youtube.com/watch?v=AwMx3BzdzrM
+//resource:  https://www.youtube.com/watch?v=AwMx3BzdzrM
+//resource:  http://www.scriptonitejs.com/js-singly-linked-list/#more-576
