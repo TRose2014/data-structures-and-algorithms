@@ -42,7 +42,7 @@ list.insert(3);
 list.insert(5);
 list.insert(1);
 console.log(list);
-console.log(list.includes(3));
+console.log(list.includes(4));
 
 
 module.exports = exports = LinkedList;

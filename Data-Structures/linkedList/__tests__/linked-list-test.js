@@ -22,7 +22,7 @@ describe('Testing with Linkedlist ', () => {
     list.insert(8);
     list.insert(4);
     console.log(list.includes(8));
-    expect(list.includes(8).toEqual(true));
-    expect(list.includes(6).toEqual(false));
+    expect(list.includes(8)).toEqual(true);
+    expect(list.includes(6)).toEqual(false);
   });
 });
