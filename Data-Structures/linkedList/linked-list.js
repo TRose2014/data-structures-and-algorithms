@@ -33,7 +33,12 @@ class LinkedList {
   }
 
   print(){
-    console.log(this.head);
+    let list = [];
+    while(this.head){
+      list.push(this.head.value);
+      this.head = this.head.next;
+    }
+    return list;
   }
 }
 
@@ -41,8 +46,7 @@ let list = new LinkedList();
 list.insert(3);
 list.insert(5);
 list.insert(1);
-console.log(list);
-console.log(list.includes(4));
+console.log(list.print());
 
 
 module.exports = exports = LinkedList;
