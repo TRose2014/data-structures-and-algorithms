@@ -1,8 +1,9 @@
 'use strict';
+// eslint-disable-next-line no-redeclare
 class Node{
   constructor (value){
     this.value = value;
-    this.ref = null;
+    this.next = null;
   }
 }
 
@@ -10,51 +11,47 @@ class Node{
 class LinkedList {
   constructor(){
     this.head = null;
+    this.length = 0;
   }
   insert(value){
-    let test = new Node(value);
-    list.head = test;
-    
+    let newNode = new Node(value);
+    if(this.head){
+      newNode.next = this.head;
+    }
+    this.head = newNode;
+    this.length++;
   }
-  // includes(index){
-  //   if(index > -1){
-  //     let current = this.head;
-  //     console.log(current);
-  //     let i = 0;
-  //     while((current.next !== null) && (i < index)){
-  //       current = current.next;
-  //       console.log(current);
-  //       i++;
-  //     }
-  //     return current !== null ? current.value : undefined;
-  //   }else{
-  //     return undefined;
-  //   }
-  // }
 
-  
+  includes(value){
+    while(this.head.next !== null){
+      if(this.head.value === value){
+        return true;
+      }
+      this.head = this.head.next;
+    }
+    return false;
+  }
+
+  print(){
+    let list = [];
+    while(this.head){
+      list.push(this.head.value);
+      this.head = this.head.next;
+    }
+    return list;
+  }
 }
 
-const list = new LinkedList();
+let list = new LinkedList();
+list.insert(3);
+list.insert(5);
+list.insert(1);
+console.log(list.print());
 
-console.log(list.head);
-list.insert(7);
-console.log(list.head);
-list.insert(2);
-console.log(list.head);
-list.includes(3);
-console.log(list.head);
-// const head = new Node(2);
-// console.log(head);
 
-// const nodeTwo = head.ref = new Node (4);
-// console.log(nodeTwo);
+module.exports = exports = LinkedList;
 
-// head.ref.ref = new Node (6);
 
-// let current = head;
-// console.log(current);
-// while(current !== null){
-//   console.log(current.value);
-//   current = current.next;
-// }
+
+//resource:  https://www.youtube.com/watch?v=AwMx3BzdzrM
+//resource:  http://www.scriptonitejs.com/js-singly-linked-list/#more-576
