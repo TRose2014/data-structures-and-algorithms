@@ -51,6 +51,9 @@ class LinkedList {
   }
 }
 
+let list = new LinkedList();
+list.insert(7);
+console.log(list.insert(2));
 
 
 module.exports = exports = LinkedList;
