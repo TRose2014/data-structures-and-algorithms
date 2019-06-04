@@ -17,3 +17,6 @@ Insert which takes any value as an argument and adds a new node with that value 
 Includes which takes any value as an argument and returns a boolean result depending on whether that value exists as a Node’s value somewhere within the list
 
 Print which takes in no arguments and returns a collection all of the current Node values in the Linked List.
+
+##Code Challenge: Class 06
+  ![WhiteBoard 6](./assets/whiteboard-6.jpg)
