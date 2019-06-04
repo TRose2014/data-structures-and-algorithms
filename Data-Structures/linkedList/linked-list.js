@@ -40,6 +40,42 @@ class LinkedList {
     }
     return list;
   }
+
+  //Class 6
+  append(value){
+    let current = this.head;
+    let newNode = new Node(value);
+    while(current.next !== null){
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+
+  insertBefore(value, newValue){
+    let current = this.head;
+    let node = new Node(newValue);
+    if(this.head.value === value){
+      this.insert(newValue);
+      return newValue.value;
+    }else{
+      while(current.next.value !== value){
+        current = current.next;
+      }
+      let temp = current.next;
+      current.next = node;
+      node.next = temp;
+    }
+  }
+  insertAfter(value, newValue){
+    let current = this.head;
+    let node = new Node(newValue);
+    while(current.value !== value){
+      current = current.next;
+    }
+    let temp = current.next;
+    current.next = node;
+    current.next.next = temp;
+  }
 }
 
 let list = new LinkedList();
