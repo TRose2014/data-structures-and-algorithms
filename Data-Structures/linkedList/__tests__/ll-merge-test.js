@@ -1,7 +1,7 @@
 'use strict';
 
-const LinkedList = require('../linkedList');
-const merge = require('../mergeList');
+const LinkedList = require('../linked-list');
+const merge = require('../llMerge/ll-merge');
 
 describe('Funtions outside of the linkedList', () => {
 
@@ -31,6 +31,7 @@ describe('Funtions outside of the linkedList', () => {
     listB.insert(2);
 
     // Act
+    console.log(listC);
     listC = merge(listA, listB);
 
     // Assert
@@ -54,6 +55,4 @@ describe('Funtions outside of the linkedList', () => {
     expect(current.value).toBe(1);
     expect(current.next).toBeNull();
   });
-
-
 });
