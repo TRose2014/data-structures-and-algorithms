@@ -20,4 +20,8 @@ Print which takes in no arguments and returns a collection all of the current No
 
 ##Code Challenge: Class 06
   ![WhiteBoard 6](./assets/whiteboard-6.jpg)
+
+
+##Code Challenge: Class 07
   ![WhiteBoard 7](./assets/whiteboard-7.jpg)
+  [Pull Request](https://github.com/TRose2014/data-structures-and-algorithms/compare/ll_kth_from_end?expand=1)
