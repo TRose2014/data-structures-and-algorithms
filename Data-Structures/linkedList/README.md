@@ -20,3 +20,4 @@ Print which takes in no arguments and returns a collection all of the current No
 
 ##Code Challenge: Class 06
   ![WhiteBoard 6](./assets/whiteboard-6.jpg)
+  ![WhiteBoard 7](./assets/whiteboard-7.jpg)
