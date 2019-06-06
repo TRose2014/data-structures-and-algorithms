@@ -31,12 +31,14 @@ describe('Funtions outside of the linkedList', () => {
     listB.insert(2);
 
     // Act
-    console.log(listC);
+  
     listC = merge(listA, listB);
+    console.log(listC.head.value);
+    
 
     // Assert
-    expect(listC.includes(1)).toBeTruthy();
-    expect(listC.includes(2)).toBeTruthy();
+    expect(listC.head.value).toBeDefined();
+    expect(listC.head.next.value).toBeDefined();
   });
 
   it('should last node in new list be null', () => {
