@@ -46,6 +46,11 @@ describe('Stack Module', () => {
       stack.peek();
       expect(stack.peek()).toBe(6);
     });
+
+    it('Can successfully instantiate an empty stack', () => {
+      expect(stack).toBeInstanceOf(Stack);
+      expect(stack.peek()).toBeNull();
+    });
   });
 
 });
