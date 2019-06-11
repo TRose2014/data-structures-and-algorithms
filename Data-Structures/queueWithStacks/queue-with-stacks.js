@@ -12,13 +12,13 @@ class psuedoQueue {
     this.stack1.push(value);
   }
 
-  // dequeue(){
-  // while(this.stack1.top){
-  //   let temp = this.stack1.pop();
-  //   this.stack2.push(temp);
-  // }
-  // return this.stack2.pop();
-  // }
+  dequeue(){
+  while(this.stack1.top){
+    let temp = this.stack1.pop();
+    this.stack2.push(temp);
+  }
+  return this.stack2.pop();
+  }
 }
 
 module.exports = psuedoQueue;
