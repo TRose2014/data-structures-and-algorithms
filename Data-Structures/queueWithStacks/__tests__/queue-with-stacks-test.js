@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 const pseduoQueue = require('../queue-with-stacks');
 
