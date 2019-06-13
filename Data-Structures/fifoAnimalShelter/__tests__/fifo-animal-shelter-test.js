@@ -1,58 +1,72 @@
-'use strict'
-
 'use strict';
 
-const AnimalShelter = require('../fifo-animal-shelter');
+const AnimalShelter = require('../fifo-animal-shelter.js');
 
-describe ('AnimalShelter', () => {
-  let shelter;
+describe('Animal Shelter', () => {
+
+  let newHome;
+  console.log(newHome);
+
   beforeEach(() => {
-    shelter = new AnimalShelter();
+    newHome = new AnimalShelter();
   });
-  
-  describe('Enqueue Function', () => {
-    it('can create a new empty shelter', () => {
-      shelter = new AnimalShelter();
 
-    
-      expect(this.dog).toBeNull();
-      expect(this.cat).toBeNull();
-    
-    });
-    it('can enqueue an animal into the shelter', () => {
-      let animal = 'dog';
-      shelter.enqueue(animal);
+  describe('constructor', () => {
 
-      expect(shelter.front.animal).toBe(animal);
-
+    it('Can successfully instantiate an instance of AnimalShelter', () => {
+      expect(newHome).toBeDefined();
+      expect(newHome).toBeInstanceOf(AnimalShelter);
     });
 
-    it('can enqueue multiple animals into the shelter', () => {
-      let animal1 = 'dog';
-      let animal2 = 'cat';
-      let animal3 = 'dog';
-
-      shelter.enqueue(animal1);
-      shelter.enqueue(animal2);
-      shelter.enqueue(animal3);
-
-      expect(shelter.front.animal).toBe(animal1);
-      expect(shelter.front.next.animal).toBe(animal2);
-      expect(shelter.back.animal).toBe(animal3);
-    });
-
-    it('can only enqueue cats and dogs into the shelter', () => {
-      let animal1 = 'dog';
-      let animal2 = 'cat';
-      let animal3 = 'iguana';
-
-      shelter.enqueue(animal1);
-      shelter.enqueue(animal2);
-      shelter.enqueue(animal3);
-
-      expect(shelter.front.animal).toBe(animal1);
-      expect(shelter.front.next.animal).toBe(animal2);
-      expect(shelter.back.animal).toBe(animal2);
-    });
+    it('Should create an empty storage', () => {
+      expect(newHome.storage).toBeDefined();
+      expect(newHome.storage).toBeInstanceOf(Array);
     });
   });
+
+  describe('enqueue', () => {
+
+    it('Can properly enqueue into the shelter', () => {
+      newHome.enqueue('cat');
+      expect(newHome.storage[0].name).toEqual('cat');
+      expect(newHome.storage.length).toEqual(1);
+    });
+
+    it('Should not add an animal if no value is provided', () => {
+      expect(newHome.storage).toBeDefined();
+      expect(newHome.storage).toBeInstanceOf(Array);
+      expect(newHome.storage.length).toEqual(0);
+    });
+
+    it('Should return must be cat or dog if the name input is something else', () => {
+      expect(newHome.enqueue('tiger')).toEqual('can only adopt a cat or a dog');
+    });
+  });
+
+  describe('dequeue', () => {
+
+    it('Should remove the oldest specified animal from the queue', () => {
+      newHome.enqueue('cat');
+      newHome.enqueue('dog');
+      newHome.enqueue('cat');
+      let popped = newHome.dequeue('dog');
+      expect(popped).toEqual({name:'dog'});
+      expect(newHome).toBeDefined();
+      expect(newHome).toBeInstanceOf(AnimalShelter);
+      expect(newHome.storage.length).toEqual(2);
+    });
+
+    it('Should not remove any other animal', () => {
+      newHome.enqueue('cat');
+      newHome.enqueue('dog');
+      newHome.enqueue('cat');
+      newHome.dequeue('dog');
+      expect(newHome.storage[0].name).toEqual('cat');
+      expect(newHome.storage[1].name).toEqual('cat');
+    });
+
+    it('Should return undefined if no parameter given', () => {
+      expect(newHome.dequeue()).toBeUndefined();
+    });
+  });
+});
