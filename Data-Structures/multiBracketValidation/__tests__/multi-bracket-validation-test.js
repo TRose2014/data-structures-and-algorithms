@@ -1,35 +1,35 @@
 'use strict';
 
-const multiBracketValidation = require('../multi-bracket-validation');
+bracketValidation = require('../multi-bracket-validation');
 
-describe('multi bracket validation module', () => {
-  it ('Should only take a string', () => {
-    let result = multiBracketValidation({})
 
-    expect(result).toEqual('Not a valid string');
-  });
+describe('Multi-Bracket Validation', () => {
+  it('should return false if length of string is an odd number', () => {
+    expect(string.length % 2 === 0).toBe(false);
 
-  it ('Should return false if the brackets do not match', () => {
-    let result = multiBracketValidation('()[}{]')
+  })
 
-    expect(result).toEqual(false);
-  });
+  it('should return true if an opening bracket is immediately followed by a same closing bracket', () => {
+    expect('()').toBe(true);
 
-  it ('Should return false if the brackets do not match when the array also includes other characters', () => {
-    let result = multiBracketValidation('(abcdef)[g}{hijk]')
+  })
 
-    expect(result).toEqual(false);
-  });
+  
+  it('should return false if an opening bracket is immediately followed by a different cloding bracket', () => {
+    expect('(]').toBe(false);
+  })
+  
+  it('should return true if 3 opening brackets is immediately followed by 3 same closing brackets', () => {
+    expect('((()))').toBe(true);
+  })
+  
 
-  it ('Should return true if the brackets match', () => {
-    let result = multiBracketValidation('(){}[]')
+  it('should return false if 2 opening brackets is immediately followed by 1 same brack and 1 different bracket', () => {
+    expect('((()])').toBe(false);
+  })
 
-    expect(result).toEqual(true);
-  });
+  it('should return true if an opening brackets is immediately followed by a same closing brackets with text in the middle', () => {
+    expect('(string)').toBe(true);
+  })
 
-  it ('Should return true if the brackets match when the array also includes other characters', () => {
-    let result = multiBracketValidation('(abcdef)[g]{hijk}')
-
-    expect(result).toEqual(true);
-  });
-});
+})
