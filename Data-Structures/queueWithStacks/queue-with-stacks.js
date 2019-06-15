@@ -5,7 +5,7 @@ const Stack = require('./stacks/stacks');
 class psuedoQueue {
   constructor(){
     this.stack1 = new Stack();
-    this.stack2 = new Stack()
+    this.stack2 = new Stack();
   }
 
   enqueue(value){
@@ -13,11 +13,11 @@ class psuedoQueue {
   }
 
   dequeue(){
-  while(this.stack1.top){
-    let temp = this.stack1.pop();
-    this.stack2.push(temp);
-  }
-  return this.stack2.pop();
+    while(this.stack1.top){
+      let temp = this.stack1.pop();
+      this.stack2.push(temp);
+    }
+    return this.stack2.pop();
   }
 }
 
