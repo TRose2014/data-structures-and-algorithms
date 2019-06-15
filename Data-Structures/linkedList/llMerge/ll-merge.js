@@ -1,25 +1,18 @@
 'use strict';
 
-const LinkedList = require('./../linked-list');
+function mergedLinkedLists(list1, list2) {
+  let current1 = list1.head;
+  let current2 = list2.head;
 
-
-let list = new LinkedList;
-
-module.exports = exports = (listA, listB) =>{
-  let listC = new LinkedList();
-  let currentA = listA.head;
-  let currentB = listB.head;
-
-  while(currentA || currentB){
-
-    while(currentA){
-      listC.insert(currentA.value);
-      currentA = currentA.next;
+  for(let i = 0; i <= list1.length; i++){
+    if(current1.next === null){
+      list1.insertAfter(current1.value, current2.value);
+      break;
     }
-    while(currentB){
-      listC.insert(currentB.value);
-      currentB = currentB.next;
-    }
+    list1.insertAfter(current1.value, current2.value);
+    current1 = current1.next.next;
+    current2 = current2.next;
   }
-  return listC;
-};
+  return list1.head;
+}
+module.exports = mergedLinkedLists;
