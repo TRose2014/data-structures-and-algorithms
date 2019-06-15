@@ -1,35 +1,36 @@
 'use strict';
 
-bracketValidation = require('../multi-bracket-validation');
 
+const bracketValidation = require('../multi-bracket-validation.js');
 
-describe('Multi-Bracket Validation', () => {
-  it('should return false if length of string is an odd number', () => {
-    expect(string.length % 2 === 0).toBe(false);
+describe('Multi Bracket Validation', () => {
 
-  })
+  let match = '((([good])))';
+  let badMatch = '(({bad))';
 
-  it('should return true if an opening bracket is immediately followed by a same closing bracket', () => {
-    expect('()').toBe(true);
+  it ('should only take a string', () => {
+    let result = bracketValidation({});
+    expect(result).toEqual('Not a valid data type');
+  });
 
-  })
+  it('should successfully return true if brackets match', () => {
+    expect(bracketValidation(match)).toBe(true);
+  });
 
-  
-  it('should return false if an opening bracket is immediately followed by a different cloding bracket', () => {
-    expect('(]').toBe(false);
-  })
-  
-  it('should return true if 3 opening brackets is immediately followed by 3 same closing brackets', () => {
-    expect('((()))').toBe(true);
-  })
-  
+  it('should successfully return false if brackets do not match', () => {
 
-  it('should return false if 2 opening brackets is immediately followed by 1 same brack and 1 different bracket', () => {
-    expect('((()])').toBe(false);
-  })
+    expect(bracketValidation(badMatch)).toBe(false);
+  });
 
-  it('should return true if an opening brackets is immediately followed by a same closing brackets with text in the middle', () => {
-    expect('(string)').toBe(true);
-  })
+  it ('Should return true if the brackets match', () => {
+    let result = bracketValidation('(){}[]');
 
-})
+    expect(result).toEqual(true);
+  });
+
+  it ('Should return false if the brackets do not match', () => {
+    let result = bracketValidation('()[}{]');
+
+    expect(result).toEqual(false);
+  });
+});

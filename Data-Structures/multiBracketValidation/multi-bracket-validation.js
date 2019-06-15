@@ -1,21 +1,30 @@
 'use strict';
 
-const stack = require('./stack');
-const newStack = stack;
-const openingBracket = '[{(';
-const closingBracket = ']})';
+function multiBracketValidation(input){
+  if (typeof input !== 'string') return 'Not a valid data type';
 
+  let array = input.split('');
+  let compareArray = [];
+  let curlArray = ['(',')','[',']','{','}'];
+  let size = array.length;
 
-multiBracketValidation(input) {
-  for(let i = 0; i < input.length; i++){
-    let char = input[i];
-    if(openingBracket === char){
-      newStack.push(char);
+  for(let i = 0; i < size; i++){
+    let shift = array.shift();
+    if(curlArray.includes(shift)){
+      if(shift === '(' || shift === '[' || shift === '{'){
+        compareArray.push(shift);
+      }else{
+        if(shift === ')' && compareArray.pop() !== '('){
+          return false;
+        }else if(shift === ']' && compareArray.pop() !== '['){
+          return false;
+        }else if(shift === '}' && compareArray.pop() !== '{'){
+          return false;
+        }
+      }
     }
-    if(closingBracket )
   }
-
+  return array.length === 0;
 }
 
-
-module.exports = multiBracketValidation(input);
+module.exports = multiBracketValidation;
