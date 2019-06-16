@@ -1,74 +1,12 @@
 'use strict';
 
-class Node{
-  constructor(value, left, right){
-    this.value = value;
-    this.left = left || null;
-    this.right = right || null;
+const BinaryTree = require('./BT/binary-tree');
 
-  }
-}
 
-class BinaryTree{
-  constructor(node, leaf){
-    this.root = node;
-    this.leaf = leaf;
-
-  }
-
-  preOrder(){
-  //Root Left Right
-    let results = [];
-    //Recursion
-    let _walk = node => {
-    //Root
-      results.push(node.value);
-      //Left
-      if(node.left) _walk(node.left);
-      //Right
-      if(node.right) _walk(node.right);
-    };
-    _walk(this.root);
-  }
-
-  inOrder(){
-  //Left Root Right
-
-    let results = [];
-    //Recursion
-    let _walk = node => {
-    //Left
-      if(node.left) _walk(node.left);
-      //Root
-      results.push(node.value);
-      //Right
-      if(node.right) _walk(node.right);
-    };
-    _walk(this.root);
-
-  }
-
-  postOrder(){
-  //Left Right Root
-
-    let results = [];
-    //Recursion
-    let _walk = node => {
-    //Left
-      if(node.left) _walk(node.left);
-      //Right
-      if(node.right) _walk(node.right);
-      //Root
-      results.push(node.value);
-    };
-    _walk(this.root);
-
-  }
-}
 
 class BinarySearchTree extends BinaryTree{
   constructor(node){
-    super();
+    super(node);
 
   }
 
@@ -110,5 +48,5 @@ class BinarySearchTree extends BinaryTree{
   }
 }
 
-module.exports = {BinarySearchTree, BinaryTree};
+module.exports = BinarySearchTree;
 
