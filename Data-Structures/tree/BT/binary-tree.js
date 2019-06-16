@@ -18,6 +18,7 @@ class BinaryTree{
       if(node.right) _walk(node.right);
     };
     _walk(this.root);
+    return results;
   }
 
   inOrder(){
@@ -34,6 +35,7 @@ class BinaryTree{
       if(node.right) _walk(node.right);
     };
     _walk(this.root);
+    return results;
 
   }
 
@@ -51,7 +53,7 @@ class BinaryTree{
       results.push(node.value);
     };
     _walk(this.root);
-
+    return results;
   }
 }
 

@@ -43,8 +43,39 @@ class BinarySearchTree extends BinaryTree{
     }
   }
   
-  contains(){
-  
+  contains(value){
+
+    if (!value) return 'No value';
+
+    let result = false;
+
+    let _walk = node => {
+      if (node.value === value) {
+        result = true;
+        return;
+      }
+
+      if (value < node.value) {
+        if (node.left) {
+          _walk(node.left);
+        } else {
+          result = false;
+          return;
+        }
+      }
+
+      if (value > node.value) {
+        if (node.right) {
+          _walk(node.right);
+        } else {
+          result = false;
+          return;
+        }
+      }
+    };
+    _walk(this.root);
+
+    return result;
   }
 }
 

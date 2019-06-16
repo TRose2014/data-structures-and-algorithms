@@ -1,6 +1,5 @@
 'use strict';
 
-// const BinaryTree = require('../tree').BinaryTree;
 const Node = require('../node/node');
 const BinarySearchTree = require('../tree');
 
@@ -36,10 +35,8 @@ sixty.right = sixtyFive;
 hundred.left = eighty;
 hundred.right = hundredTwenty;
 
-console.log(root.left);
 
 const tree = new BinarySearchTree(root);
-// const searchTree = new BinarySearchTree();
 
 
 describe('Binary Tree', () => {
@@ -60,24 +57,114 @@ describe('Binary Tree', () => {
   });
   
   describe('Traversals', () => {
-    let inOrder = tree.inOrder();
-    let postOrder = tree.postOrder();
-    let preOrder = tree.preOrder();
-    
-    
-    it('should successfully return a collection from a preorder traversal', () => {
-      console.log(inOrder);
-      expect(inOrder.toBeDefined());
-      expect(inOrder.toEqual([twenty, sixtyFive, sixty, root, eighty, hundred, hundredTwenty]));
+    let bst = new BinarySearchTree();
+
+    beforeEach(() => {
+      let root = new Node(70);
+      let sixty = new Node(60);
+      let twenty = new Node(20);
+      let sixtyFive = new Node(65);
+      let hundred = new Node(100);
+      let eighty = new Node (80);
+      let hundredTwenty = new Node(120);
+      
+      root.left = sixty;
+      root.right = hundred;
+      
+      sixty.left = twenty;
+      sixty.right = sixtyFive;
+      
+      hundred.left = eighty;
+      hundred.right = hundredTwenty;
+
+      bst.root = root;
+    });
+
+    it('Can successfully return a collection from a preorder traversal', () => {
+      let preOrder = bst.preOrder();
+      expect(preOrder).toStrictEqual([70, 60, 20, 65, 100, 80, 120]);
+    });
+
+
+    it('Can successfully return a collection from an inorder traversal', () => {
+      let order = bst.inOrder();
+      expect(order).toStrictEqual([20, 60, 65, 70, 80, 100, 120]);
+    });
+
+    it('Can successfully return a collection from a postorder traversal', () => {
+      let post = bst.postOrder();
+      expect(post).toStrictEqual([20, 65, 60, 80, 120, 100, 70]);
+    });
+
+  });
+
+  describe('add method', () => {
+    let bst = new BinarySearchTree();
+
+    beforeEach(() => {
+      let root = new Node(70);
+      let sixty = new Node(60);
+      let twenty = new Node(20);
+      let sixtyFive = new Node(65);
+      let hundred = new Node(100);
+      let eighty = new Node (80);
+      let hundredTwenty = new Node(120);
+      
+      root.left = sixty;
+      root.right = hundred;
+      
+      sixty.left = twenty;
+      sixty.right = sixtyFive;
+      
+      hundred.left = eighty;
+      hundred.right = hundredTwenty;
+
+      bst.root = root;
+    });
+    it('Can successfully a tree with a single root node', () => {
+      expect(tree.root).toBeDefined();
+      expect(tree.root.value).toEqual(70);
     });
   });
 
+  describe('contains method', () => {
+    let bst = new BinarySearchTree();
 
+    beforeEach(() => {
+      let root = new Node(70);
+      let sixty = new Node(60);
+      let twenty = new Node(20);
+      let sixtyFive = new Node(65);
+      let hundred = new Node(100);
+      let eighty = new Node (80);
+      let hundredTwenty = new Node(120);
+      
+      root.left = sixty;
+      root.right = hundred;
+      
+      sixty.left = twenty;
+      sixty.right = sixtyFive;
+      
+      hundred.left = eighty;
+      hundred.right = hundredTwenty;
+
+      bst.root = root;
+    });
+
+    it('Should return true if tree contains value', () => {
+
+      expect(tree.contains(60)).toBeTruthy();
+    });
+
+    it('Should return false if tree does not contain value', () => {
+
+      expect(tree.contains(30)).toBeFalsy();
+    });
+
+    it('Should not run if no value is specified', () => {
+      expect(tree.contains()).toEqual('No value');
+    });
+  });
 });
-
-
-// Can successfully return a collection from a preorder traversal
-// Can successfully return a collection from an inorder traversal
-// Can successfully return a collection from a postorder traversal
 
 
