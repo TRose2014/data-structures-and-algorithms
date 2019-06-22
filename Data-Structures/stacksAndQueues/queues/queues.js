@@ -29,7 +29,11 @@ class Queue{
   }
 
   peek(){
-    return this.front.value;
+    if(!this.top){
+      return null;
+    }else{
+      return this.top.value;
+    }
   }
 }
 
