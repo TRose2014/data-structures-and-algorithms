@@ -11,7 +11,7 @@ class BinaryTree{
     //Recursion
     let _walk = node => {
     //Root
-      results.push(node.value); 
+      results.push(node.value);
       //Left
       if(node.left) _walk(node.left);
       //Right
@@ -54,38 +54,6 @@ class BinaryTree{
     };
     _walk(this.root);
     return results;
-  }
-
-  breadthFirst(tree) {
-    if(tree === null || tree === undefined){
-      return 'error';
-    }
-
-    let queue = [tree.root];
-    let currentNode = queue.shift();
-
-    while (currentNode) {
-      console.log(currentNode.value);
-      queue.push(currentNode.left);
-      queue.push(currentNode.right);
-      currentNode = queue.shift();
-    }
-  }
-
-  findMaximumValue(tree) {
-    let queue = [this.root];
-    let currentNode = queue.shift();
-    let maxVal = this.root.value;
-    while (currentNode) {
-      if(currentNode.value > maxVal){
-        maxVal = currentNode.value;
-      }
-      queue.push(currentNode.left);
-      queue.push(currentNode.right);
-      currentNode = queue.shift();
-    }
-    return maxVal;
-
   }
 }
 

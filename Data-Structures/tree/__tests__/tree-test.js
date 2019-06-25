@@ -154,11 +154,13 @@ describe('Binary Tree', () => {
     it('Should return true if tree contains value', () => {
 
       expect(tree.contains(60)).toBeTruthy();
+      expect(tree.contains(120)).toBeTruthy();
     });
 
     it('Should return false if tree does not contain value', () => {
 
       expect(tree.contains(30)).toBeFalsy();
+      expect(tree.contains(10)).toBeFalsy();
     });
 
     it('Should not run if no value is specified', () => {

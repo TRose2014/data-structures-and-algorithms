@@ -1,4 +1,4 @@
-let trees = require('../tree');
+let trees = require('../BT/binary-tree');
 
 describe('binaryTree', () => {
   let tree;
