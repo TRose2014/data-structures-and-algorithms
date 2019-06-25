@@ -19,9 +19,6 @@ O(log n) - contains/add
 O(h) - space - height 
 
 
-
-
-
 # Breath First
 
 # Challenge Summary
