@@ -68,20 +68,25 @@ class BinaryTree{
     }
   }
 
-  findMaximumValue(tree) {
-    let queue = [this.root];
-    let currentNode = queue.shift();
-    let maxVal = this.root.value;
-    while (currentNode) {
-      if(currentNode.value > maxVal){
-        maxVal = currentNode.value;
-      }
-      queue.push(currentNode.left);
-      queue.push(currentNode.right);
-      currentNode = queue.shift();
+  findMaximumValue(tree){
+    if(tree === null || tree === undefined){
+      return 'error';
     }
-    return maxVal;
+    let max = tree.root.value;
 
+    let _walk = node => {
+      if(node.left){
+        _walk(node.left);
+      }
+      if(max < node.value){
+        max = node.value;
+      }
+      if(node.right){
+        _walk(node.right);
+      }
+    };
+    _walk(tree.root);
+    return max;
   }
 }
 

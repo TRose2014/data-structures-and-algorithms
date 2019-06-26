@@ -3,7 +3,6 @@
 const BinaryTree = require('./BT/binary-tree');
 
 
-
 class BinarySearchTree extends BinaryTree{
   constructor(node){
     super(node);
