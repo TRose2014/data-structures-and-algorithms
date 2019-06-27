@@ -12,4 +12,4 @@ Curly Brackets : {}
 O(n)
 
 ## Solution
-![Whiteboard 13](./assets/CC_13.JPG)
+![Whiteboard 13](./assets/CC_13_2.JPG)
