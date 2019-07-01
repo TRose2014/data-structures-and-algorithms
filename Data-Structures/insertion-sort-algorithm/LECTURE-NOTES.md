@@ -21,7 +21,13 @@ Readings and References
 ![Diagram](https://he-s3.s3.amazonaws.com/media/uploads/46bfac9.png)
 
 # Algorithm
-##Describe in detail how the algorithm works. Include small code snippets to possibly support the points
+Create a function called InsertionSort</br>
+In a for loop set i equal to 0 and have i be less than array.length</br>
+Assume the first item is sorted</br>
+Find th next value to compare the sorted value</br>
+Move over any necessary elements to make space for value being added</br>
+Insert value into sorted, rinse and repease</br>
+
 
 # Pseudocode
 ```
@@ -47,6 +53,5 @@ Read</br>
 [Free Code Camp](https://guide.freecodecamp.org/algorithms/sorting-algorithms/insertion-sort/)</br>
 [Khan Academy](https://www.khanacademy.org/computing/computer-science/algorithms/insertion-sort/a/insertion-sort)
 
-Bookmark
-
-[Website]()
+Bookmark</br>
+[Website](https://medium.com/basecs/inching-towards-insertion-sort-9799274430da)
