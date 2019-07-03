@@ -1,74 +1,40 @@
 'use strict';
 
-function mergeSort(arr){
-  let n = arr.length;
+module.exports = exports = {};
 
-  if(arr.length > 1){
-    let mid = n/2;
-    let b = arr[0];
-    let c = arr[mid + 1];
+exports.mergeSort = (unsortedArray) => {
+
+  if(unsortedArray.some(isNaN)){
+    throw new Error('Not all elements are numbers');
   }
-}
 
-// ALGORITHM Mergesort(arr)
-//     DECLARE n <-- arr.length
-           
-//     if arr.length > 1
-//       DECLARE mid <-- n/2
-//       DECLARE b <-- arr[0...mid]
-//       DECLARE c <-- arr[mid...n]
-//       // break down the left side
-//       Mergesort(b)
-//       // break down the right side
-//       Mergesort(c)
-//       // merge the left and the right side together
-//       Merge(b, c, arr)
+  if (unsortedArray.length <= 1) {
+    return unsortedArray;
+  }
+  const middle = Math.floor(unsortedArray.length / 2);
 
+  const left = unsortedArray.slice(0, middle);
+  const right = unsortedArray.slice(middle);
 
-function merge(b, c, a){
+  return _merge(
+    exports.mergeSort(left), exports.mergeSort(right)
+  );
+};
 
-  let i = 0;
-  let j = 0;
-  let k = 0;
+function _merge (left, right) {
+  let resultArray = [], leftIndex = 0, rightIndex = 0;
 
-  while(i < b && j < c){
-    if(b[i] <= c[j]){
-      a[k] = b[i];
-      i = i + 1;
-    }else{
-      a[k] = c[j];
-      j = j + 1;
+  while (leftIndex < left.length && rightIndex < right.length) {
+    if (left[leftIndex] < right[rightIndex]) {
+      resultArray.push(left[leftIndex]);
+      leftIndex++;
+    } else {
+      resultArray.push(right[rightIndex]);
+      rightIndex++;
     }
-
-    k = k + 1;
   }
 
-  if(i === b.length){
-    c.push(a);
-  }else{
-    b.push(a);
-  }
-  return a;
+  return resultArray
+    .concat(left.slice(leftIndex))
+    .concat(right.slice(rightIndex));
 }
-
-// ALGORITHM Merge(b, c, a)
-//     DECLARE i <-- 0
-//     DECLARE j <-- 0
-//     DECLARE k <-- 0
-
-//     while i < b && j < c
-//         if b[i] <= c[j]
-//             a[k] <-- b[i]
-//             i <-- i + 1
-//         else
-//             a[k] = c[j]
-//             j <-- j + 1
-            
-//         k <-- k + 1
-
-//     if i = b.length
-//        add remaining items in array c to array a
-//     else
-//        add remaining items in array b to array a
-       
-//     return a
