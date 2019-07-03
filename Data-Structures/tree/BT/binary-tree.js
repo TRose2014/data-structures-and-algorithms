@@ -57,6 +57,10 @@ class BinaryTree{
   }
 
   breadthFirst(tree) {
+    if(tree === null || tree === undefined){
+      return 'error';
+    }
+
     let queue = [tree.root];
     let currentNode = queue.shift();
 

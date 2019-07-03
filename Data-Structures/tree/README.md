@@ -29,13 +29,10 @@ Write a breadth first traversal method which takes a Binary Tree as its unique i
 
 Without utilizing any of the built-in methods available to your language, traverse the input tree using a Breadth-first approach; print every visited node’s value.
 
-## Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 
 ## Solution
-![Whiteboard 17](./assets/CC-17.JPG);
 
-
+![Whiteboard 17](./assets/CC_17_2.JPG);
 
 # Maximum Value
 
@@ -46,7 +43,6 @@ Find the Maximum Value in a Binary Tree
 Write a function called find-maximum-value which takes binary tree as its only input. 
 
 Without utilizing any of the built-in methods available to your language, return the maximum value stored in the tree. You can assume that the values stored in the Binary Tree will be numeric.
-
 
 
 ![Whiteboard 18](./assets/CC_18_2.JPG);
