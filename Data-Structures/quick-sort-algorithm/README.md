@@ -1,13 +1,13 @@
 # Quick Sort Assigment
-<!-- Complete a working, tested implementation of Insertion Sort, based on the pseudo code provided -->
+Complete a working, tested implementation of QuickSort, based on the pseudo code provided
 
 ## Challenge
-<!-- Research and prepare a lecture on the Insertion Sort Algorithm suitable for delivery to 301 level student. Your lecture notes should be the only material an instructor should need to conduct a high quality lecture on the subject. -->
+Research and prepare a lecture on the QuickSort Algorithm suitable for delivery to 301 level student. Your lecture notes should be the only material an instructor should need to conduct a high quality lecture on the subject.
 
 ## Approach & Efficiency
-<!-- O(n). This algorithm will take as long as there are items in the array -->
+Best case - Θ(n log n)
+Worse case - 0(n^2)
 
-Θ(nlog2n)
 ## Solution
 ```
 ALGORITHM QuickSort(arr, left, right)
@@ -40,7 +40,5 @@ ALGORITHM Swap(arr, i, low)
     temp <-- arr[i]
     arr[i] <-- arr[low]
     arr[low] <-- temp
-
-
-
+    
 ```
