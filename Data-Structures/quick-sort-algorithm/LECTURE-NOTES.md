@@ -1,7 +1,7 @@
 # Lecture Notes: Quick Sort
 
 ## Description:
- QuickSort is a Divide and Conquer algorithm. It picks an element as pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways.
+ Quick Sort is a Divide and Conquer algorithm. It picks an element as pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways.
 
 
 ## Is it more efficient than others? How does it attack the problem differently?
@@ -10,7 +10,7 @@
 
 
 ## Learning Objectives
-<!-- The baiscs of Insertion sort  -->
+The baiscs of Quick Sort 
 
 # Lecture Flow
 Diagram<br />
