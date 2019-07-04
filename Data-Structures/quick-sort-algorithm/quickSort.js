@@ -1,34 +1,36 @@
 'use strict';
 
-let quickSort = (arr, low, high) => {
-  if (low < high) {
-    let pi = partition(arr, low, high);
+let quickSort = (arr, left, right) => {
+  if (left < right) {
+    let position = partition(arr, left, right);
 
-    quickSort(arr, low, pi - 1);
-    quickSort(arr, pi + 1, high);
+    quickSort(arr, left, position - 1);
+    quickSort(arr, position + 1, right);
   }
 };
 
-let partition = (arr, low, high) => {
-  let i = low - 1;
-  let pivot = arr[high];
 
-  for (let j = low; j <= high - 1; j++) {
-    if (arr[j] <= pivot) {
-      i++;
 
-      swap(arr, j, i);
+let partition = (arr, left, right) => {
+  let pivot = arr[right];
+  let l = left - 1;
+
+  for (let i = left; i <= right - 1; i++) {
+    if (arr[i] <= pivot) {
+      l++;
+
+      swap(arr, i, l);
     }
   }
 
-  swap(arr, high, i + 1);
-  return (i + 1);
+  swap(arr, right, l + 1);
+  return (l + 1);
 };
 
-let swap = (arr, i, low) => {
+let swap = (arr, i, left) => {
   let temp = arr[i];
-  arr[i] = arr[low];
-  arr[low] = temp;
+  arr[i] = arr[left];
+  arr[left] = temp;
 };
 
 module.exports = quickSort;
