@@ -2,6 +2,13 @@
 
 // const hashtable =  require('../hashtable');
 
+describe('dummy test', () => {
+  it('should return true', () => {
+    expect(true).toBeTruthy();
+  });
+});
+
+
 beforeEach(() => {
   // hastable
 });
