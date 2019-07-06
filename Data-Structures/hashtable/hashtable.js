@@ -54,7 +54,6 @@ class LinkedList{
       values.push(current.value);
       current = current.next;
     }
-
     return values;
   }
 }

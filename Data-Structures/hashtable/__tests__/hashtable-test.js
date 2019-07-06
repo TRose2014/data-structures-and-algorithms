@@ -3,13 +3,6 @@
 const HashTable =  require('../hashtable').HashTable;
 const LinkedList =  require('../hashtable').LinkedList;
 
-describe('dummy test', () => {
-  it('should return true', () => {
-    expect(true).toBeTruthy();
-  });
-});
-
-
 describe('hashtable table', () => {
   it('should create an empty instance of a hashtable', () => {
     let hashTable;
@@ -20,8 +13,6 @@ describe('hashtable table', () => {
     expect(hashTable.size).toBe(expectedSize);
     expect(hashTable.buckets).toBeDefined();
     expect(hashTable.buckets.length).toBe(expectedSize);
-
-    //Test default size
 
   });
 
@@ -52,36 +43,65 @@ describe('hash method', () => {
 
     expect(result).toBe(expectedHash);
   });
+});
 
-  it('should return the default size of a hashtable', () => {
-    let hashTable = new HashTable();
-    expect(hashTable.size).toBe(0);
+describe('add method', () => {
+  it('should throw an error if a key that is passsed is not a string', () => {
+    let hashTable = new HashTable(5);
+
+    // Jest needs to captures the error, and this is the way it captures. Without it, the error will throw but jest won't capture it
+    let result = () => hashTable.add(2, 55);
+
+    expect(result).toThrow();
 
   });
 
-  //Pass in a key that is a non string
-  //Pass in no key
-});
+  it('should throw an error if a key and a value is not passed', () => {
+    let hashTable = new HashTable(5);
 
-// describe('add method', () => {
-//   it('should throw an error if a key that is passsed is not a string', () => {
-//     let hashTable = new HashTable(5);
-//     let key = 5;
+    let result = () => hashTable.add();
 
-//     expect(hashTable.hash(key)).toThrow('Invalid key provided');
-
-//   });
-// });
-
-describe('get method', () => {
-  it('should return the correct value based on a key', () => {
+    expect(result).toThrow();
 
   });
 });
 
-
 describe('get method', () => {
+  it('should return the correct value if given a key', () => {
+    let hashTable = new HashTable(5);
+    hashTable.add('test', 3);
+    let find = hashTable.get('test');
+
+    expect(find).toBe(3);
+  });
+
   it('should return null for keys that do not exist in the hashtable', () => {
+    let hashTable = new HashTable(5);
+    hashTable.add('test', 3);
+    let find = hashTable.get('test');
+
+    expect(find).toBe(3);
+  });
+
+  it('should return error if no key is provided', () => {
+    let hashTable = new HashTable(5);
+    let find = hashTable.get;
+
+    expect(find).toThrow();
+  });
+});
+
+describe('contains method', () => {
+  it('should successfully return true/false if a key is or inside the hashtable or not', () => {
+    let hashTable;
+    hashTable = new HashTable(5);
+    hashTable.add('test', 3);
+    hashTable.add('jest', 3);
+    hashTable.add('request', 3);
+
+    let result = () => hashTable.get('request');
+
+    expect(result).toBe(true);
 
   });
 });
@@ -97,16 +117,4 @@ describe('collisions', () => {
   });
 });
 
-
-describe('contains method', () => {
-  it('should successfully return true/false if a key is or inside the hashtable or not', () => {
-
-  });
-});
-
-describe('hash method', () => {
-  it('should returns an index in the collection', () => {
-
-  });
-});
 
