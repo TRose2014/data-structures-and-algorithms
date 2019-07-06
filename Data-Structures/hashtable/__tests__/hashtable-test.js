@@ -10,10 +10,6 @@ describe('dummy test', () => {
 });
 
 
-beforeEach(() => {
-  // hastable
-});
-
 describe('hashtable table', () => {
   it('should create an empty instance of a hashtable', () => {
     let hashTable;
@@ -29,13 +25,15 @@ describe('hashtable table', () => {
 
   });
 
-  it('should successfully hash a key to an in-range value', () => {
+  it('should return a default size', () => {
+    let hashTable = new HashTable();
+    expect(hashTable.size).toBe(0);
 
   });
 });
 
 describe('hash method', () => {
-  it('should has cat to 3 with 5 buckets', () => {
+  it('should have the key cat to go to bucket 3 with a hash table containing 5 buckets', () => {
     let expectedHash = 3;
     let key = 'cat';
     let hashTable = new HashTable(5);
@@ -45,9 +43,9 @@ describe('hash method', () => {
     expect(result).toBe(expectedHash);
   });
 
-  it('should has foo to 1 with 5 buckets', () => {
-    let expectedHash = 1;
-    let key = 'foo';
+  it('should have crepitate to go to bucket 4 with a hash table containing 5 buckets', () => {
+    let expectedHash = 4;
+    let key = 'crepitate';
     let hashTable = new HashTable(5);
 
     let result = hashTable.hash(key);
@@ -55,15 +53,25 @@ describe('hash method', () => {
     expect(result).toBe(expectedHash);
   });
 
+  it('should return the default size of a hashtable', () => {
+    let hashTable = new HashTable();
+    expect(hashTable.size).toBe(0);
+
+  });
+
   //Pass in a key that is a non string
   //Pass in no key
 });
 
-describe('add method', () => {
-  it('should add a key/value to the hashtable', () => {
+// describe('add method', () => {
+//   it('should throw an error if a key that is passsed is not a string', () => {
+//     let hashTable = new HashTable(5);
+//     let key = 5;
 
-  });
-});
+//     expect(hashTable.hash(key)).toThrow('Invalid key provided');
+
+//   });
+// });
 
 describe('get method', () => {
   it('should return the correct value based on a key', () => {

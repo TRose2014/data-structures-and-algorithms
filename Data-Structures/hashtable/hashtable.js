@@ -3,12 +3,16 @@
 //hashtable
 // Need to move these files to hashtable1 branch
 
+//Node Class
 class Node{
   constructor(value){
     this.value = value;
     this.next = null;
   }
 }
+
+
+//LinkedList Class
 
 class LinkedList{
   constructor(){
@@ -39,21 +43,23 @@ class LinkedList{
       if(current.value[0] === key) return current.value[1];
       current = current.next;
     }
+    return;
   }
 
   values(){
-    let value = [];
+    let values = [];
     let current = this.head;
 
     while(current){
-      this.value.push(current.value);
+      values.push(current.value);
       current = current.next;
     }
 
-    return value;
+    return values;
   }
 }
 
+//HashTable Class
 
 class HashTable {
   constructor(size){
@@ -62,12 +68,17 @@ class HashTable {
 
   }
   /**
- * @function 
- * @param {sting} key 
- * @description splits the key to get indivudal characters, gets the charCode of each indivual character and reduces those numbers in one large number. Multiplies that by 599 and divides the size of the hash table and uses the remainder to determine the index
- */
+   * @function hash
+   * @param {sting} key 
+   * @description splits the key to get indivudal characters, gets the charCode of each indivual character and reduces those numbers in one large number. Multiplies that by 599 and divides the size of the hash table and uses the remainder to determine the index
+   */
+
   hash(key){
-    return key.split('').reduce((prev, curr) => prev +curr.charCodeAt(0), 0) * 599 % this.size;
+    if(typeof key !== 'string'){
+      throw new Error('Invalid key provided');
+    } else{
+      return key.split('').reduce((prev, curr) => prev +curr.charCodeAt(0), 0) * 599 % this.size;
+    }
   }
 
   /**
@@ -93,18 +104,11 @@ class HashTable {
       throw e;
     }
   }
-
-  print(){
-    this.buckets.forEach((item, index) => console.log(index, item && item.values()));
-  }
-
-
-
   /**
- * @function get
- * @param - key
- * @description - returns the value from the table
- */
+   * @function get
+   * @param - key
+   * @description - returns the value from the table
+   */
 
   get(key){
     if(!key) throw new Error ('Invalid key');
@@ -116,6 +120,14 @@ class HashTable {
     return this.buckets[index].getWithKey(key);
   }
 
+
+  /**
+   * @function contains
+   * @param - key
+   * @description - returns a boolean, indicating if the key exists in the table already
+   * 
+   */
+  
   contains(key){
     if(!key) throw new Error ('Invalid key');
 
@@ -126,27 +138,9 @@ class HashTable {
     return this.buckets[index].getWithKey(key) ? true : false;
   }
 
-
-
-
-
- 
-  /**
- * @function contains
- * @param - key
- * @description - returns a boolean, indicating if the key exists in the table already
- * 
- */
-
-
-
-
-
-  /**
-  * @function hash
-  * @param - arbitrary key 
-  * @description - returns an index in the collection.
-  */
+  print(){
+    this.buckets.forEach((item, index) => console.log(index, item && item.values()));
+  }
 
 }
 
