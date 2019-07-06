@@ -1,6 +1,7 @@
 'use strict';
 
-// const hashtable =  require('../hashtable');
+const HashTable =  require('../hashtable').HashTable;
+const LinkedList =  require('../hashtable').LinkedList;
 
 describe('dummy test', () => {
   it('should return true', () => {
@@ -14,13 +15,48 @@ beforeEach(() => {
 });
 
 describe('hashtable table', () => {
-  it('should create an empy instance of a hashtable', () => {
+  it('should create an empty instance of a hashtable', () => {
+    let hashTable;
+    let expectedSize = 10;
+    hashTable = new HashTable(expectedSize);
+    expect(hashTable).toBeInstanceOf(HashTable);
+    expect(hashTable.size).toBeDefined();
+    expect(hashTable.size).toBe(expectedSize);
+    expect(hashTable.buckets).toBeDefined();
+    expect(hashTable.buckets.length).toBe(expectedSize);
+
+    //Test default size
 
   });
 
   it('should successfully hash a key to an in-range value', () => {
 
   });
+});
+
+describe('hash method', () => {
+  it('should has cat to 3 with 5 buckets', () => {
+    let expectedHash = 3;
+    let key = 'cat';
+    let hashTable = new HashTable(5);
+
+    let result = hashTable.hash(key);
+
+    expect(result).toBe(expectedHash);
+  });
+
+  it('should has foo to 1 with 5 buckets', () => {
+    let expectedHash = 1;
+    let key = 'foo';
+    let hashTable = new HashTable(5);
+
+    let result = hashTable.hash(key);
+
+    expect(result).toBe(expectedHash);
+  });
+
+  //Pass in a key that is a non string
+  //Pass in no key
 });
 
 describe('add method', () => {
