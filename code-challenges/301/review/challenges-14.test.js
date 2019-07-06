@@ -38,7 +38,7 @@ let starWarsData = [{
   skin_color: 'gold',
   eye_color: 'yellow',
   birth_year: '112BBY',
-  gender: 'n/a'
+  gender: 'n/a',
 },
 {
   name: 'R2-D2',
@@ -48,7 +48,7 @@ let starWarsData = [{
   skin_color: 'white, blue',
   eye_color: 'red',
   birth_year: '33BBY',
-  gender: 'n/a'
+  gender: 'n/a',
 },
 {
   name: 'Darth Vader',
@@ -58,7 +58,7 @@ let starWarsData = [{
   skin_color: 'white',
   eye_color: 'yellow',
   birth_year: '41.9BBY',
-  gender: 'male'
+  gender: 'male',
 },
 {
   name: 'Leia Organa',
@@ -68,7 +68,7 @@ let starWarsData = [{
   skin_color: 'light',
   eye_color: 'brown',
   birth_year: '19BBY',
-  gender: 'female'
+  gender: 'female',
 },
 {
   name: 'Pex Kylar',
@@ -78,7 +78,7 @@ let starWarsData = [{
   skin_color: 'brown',
   eye_color: 'none',
   birth_year: '27BBY',
-  gender: 'n/a'
+  gender: 'n/a',
 }];
 
 let biggerThanLuke = (arr) => {
@@ -181,7 +181,7 @@ describe('Testing challenge 3', () => {
     expect(sortBy('price', [
       {name: 'Sweatshirt', price: 45},
       {name: 'Bookmark', price: 2.50},
-      {name: 'Tote bag', price: 15}
+      {name: 'Tote bag', price: 15},
     ])).toStrictEqual([
       {name: 'Bookmark', price: 2.50},
       {name: 'Tote bag', price: 15},
@@ -195,7 +195,7 @@ describe('Testing challenge 3', () => {
     expect(sortBy('name', [
       {name: 'Sweatshirt', price: 45},
       {name: 'Bookmark', price: 2.50},
-      {name: 'Tote bag', price: 15}
+      {name: 'Tote bag', price: 15},
     ])).toStrictEqual([
       {name: 'Bookmark', price: 2.50},
       {name: 'Sweatshirt', price: 45},

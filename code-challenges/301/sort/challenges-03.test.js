@@ -161,8 +161,8 @@ const sortPeopleBetter = (arr) => {
       }
     }if(a.firstName === b.firstName){
       return a.age - b.age;
-      }
-      return 0;
+    }
+    return 0;
   });
   return arr;
 };
@@ -261,7 +261,7 @@ describe('Testing challenge 5', () => {
     expect(sortByPrice([
       {name: 'Sweatshirt', price: 45},
       {name: 'Bookmark', price: 2.50},
-      {name: 'Tote bag', price: 15}
+      {name: 'Tote bag', price: 15},
     ])).toStrictEqual([
       {name: 'Bookmark', price: 2.50},
       {name: 'Tote bag', price: 15},

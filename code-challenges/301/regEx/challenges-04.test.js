@@ -22,7 +22,7 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  let caps = str.match(/[A-Z][a-z]*/g);;
+  let caps = str.match(/[A-Z][a-z]*/g);
   return caps;
 };
 

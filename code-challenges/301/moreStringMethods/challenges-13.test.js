@@ -41,7 +41,7 @@ For example, (123) 456-7890 returns 1234567890
 const standardizePhoneNumbers = (arr) => {
   return arr.map(phoneNumber => {
 
-    return `${phoneNumber.substring(1,4)}${phoneNumber.substring(6,9)}${phoneNumber.substring(10)}`
+    return `${phoneNumber.substring(1,4)}${phoneNumber.substring(6,9)}${phoneNumber.substring(10)}`;
   });
 };
 
@@ -133,6 +133,7 @@ For example, ['Tuesday', 'Monday', 'Wednesday and Thursday', 'Tuesday 2', 'Thurs
 ]
 ------------------------------------------------------------------------------------------------ */
 
+// eslint-disable-next-line no-unused-vars
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 const sortByDay = (arr) => {
@@ -229,13 +230,13 @@ describe('Testing challenge 8', () => {
     const roster = [
       ['Michelle', 'Allie', 'Brook TESTING'],
       ['Brook Riggio', 'hey look it\'s Brook', 'Jennifer'],
-      ['Nicholas', 'Sam', 'Scott', 'Vinicio']
+      ['Nicholas', 'Sam', 'Scott', 'Vinicio'],
     ];
 
     expect(unenrollBrook(roster)).toStrictEqual([
       ['Michelle', 'Allie'],
       ['Jennifer'],
-      ['Nicholas', 'Sam', 'Scott', 'Vinicio']
+      ['Nicholas', 'Sam', 'Scott', 'Vinicio'],
     ]);
     expect(unenrollBrook([['Brook', 'person'], [], ['person', 'person', 'Brook']])).toStrictEqual([['person'], [], ['person', 'person']]);
     expect(unenrollBrook([])).toStrictEqual([]);

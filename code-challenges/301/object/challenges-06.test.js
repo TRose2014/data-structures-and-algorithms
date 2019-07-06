@@ -27,44 +27,44 @@ let characters = [
     name: 'Eddard',
     spouse: 'Catelyn',
     children: ['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon'],
-    house: 'Stark'
+    house: 'Stark',
   },
   {
     name: 'Jon A.',
     spouse: 'Lysa',
     children: ['Robin'],
-    house: 'Arryn'
+    house: 'Arryn',
   },
   {
     name: 'Cersei',
     spouse: 'Robert',
     children: ['Joffrey', 'Myrcella', 'Tommen'],
-    house: 'Lannister'
+    house: 'Lannister',
   },
   {
     name: 'Daenarys',
     spouse: 'Khal Drogo',
     children: ['Drogon', 'Rhaegal', 'Viserion'],
-    house: 'Targaryen'
+    house: 'Targaryen',
   },
   {
     name: 'Mace',
     spouse: 'Alerie',
     children: ['Margaery', 'Loras'],
-    house: 'Tyrell'
+    house: 'Tyrell',
   },
   {
     name: 'Sansa',
     spouse: 'Tyrion',
     children: [],
-    house: 'Stark'
+    house: 'Stark',
   },
   {
     name: 'Jon S.',
     spouse: null,
     children: [],
-    house: 'Snow'
-  }
+    house: 'Snow',
+  },
 ];
 
 const getHouses = (arr) => {
@@ -160,6 +160,7 @@ All of these objects should be added to an array named "survivors". Return the "
 For example: [ { house: 'Stark', members: 6 }, { house: 'Arryn', members: 2 }, ... ].
 ------------------------------------------------------------------------------------------------ */
 
+// eslint-disable-next-line no-unused-vars
 const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 
 const houseSurvivors = (arr) => {
