@@ -3,6 +3,14 @@
 const HashTable =  require('../hashtable').HashTable;
 const LinkedList =  require('../hashtable').LinkedList;
 
+describe('linked list', () => {
+  it('should create an empty instance of a linked list', () => {
+    let ll = new LinkedList;
+    expect(ll).toBeInstanceOf(LinkedList);
+  });
+});
+
+
 describe('hashtable table', () => {
   it('should create an empty instance of a hashtable', () => {
     let hashTable;
@@ -46,6 +54,15 @@ describe('hash method', () => {
 });
 
 describe('add method', () => {
+  it('should throw an error if the same key is added inside the hashtable', () => {
+    let hashTable = new HashTable(5);
+    hashTable.add('test', 55);
+    let result = () => hashTable.add('test', 55);
+    
+    expect(result).toThrow();
+  });
+
+
   it('should throw an error if a key that is passsed is not a string', () => {
     let hashTable = new HashTable(5);
 
@@ -92,16 +109,29 @@ describe('get method', () => {
 });
 
 describe('contains method', () => {
-  it('should successfully return true/false if a key is or inside the hashtable or not', () => {
+  it('should return true if a key is inside the hashtable', () => {
     let hashTable;
     hashTable = new HashTable(5);
     hashTable.add('test', 3);
     hashTable.add('jest', 3);
     hashTable.add('request', 3);
 
-    let result = () => hashTable.get('request');
+    let result = hashTable.contains('request');
 
     expect(result).toBe(true);
+
+  });
+
+  it('should return false if a key is not inside the hashtable', () => {
+    let hashTable;
+    hashTable = new HashTable(5);
+    hashTable.add('test', 3);
+    hashTable.add('jest', 3);
+    hashTable.add('request', 3);
+
+    let result = hashTable.contains('best');
+
+    expect(result).toBe(null);
 
   });
 });

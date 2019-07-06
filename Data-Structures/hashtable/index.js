@@ -9,5 +9,5 @@ let hashTable = new HashTable(5);
 hashTable.add('cat', 42);
 hashTable.add('foo', 55);
 hashTable.add('crepitate', 24);
-console.log('In console', hashTable.contain('crepitate'));
+console.log('In console', hashTable.contains('crepitate'));
 hashTable.print();

@@ -83,7 +83,7 @@ class HashTable {
   /**
    * @function add
    * @param - key/value pair
-   * @description -  hashs the key, and add the key and value pair to the table
+   * @description -  hashes the key, and add the key and value pair to the table
    */
 
   add(key, value){
