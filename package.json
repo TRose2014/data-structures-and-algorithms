@@ -1,0 +1,25 @@
+{
+  "name": "data-structures-and-algorithms",
+  "version": "1.0.0",
+  "description": "##301",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage --verbose",
+    "watch": "jest --watchall",
+    "lint": "eslint **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TRose2014/data-structures-and-algorithms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TRose2014/data-structures-and-algorithms/issues"
+  },
+  "dependencies": {
+    "eslint": "^5.16.0",
+    "jest": "^24.8.0"
+  },
+  "homepage": "https://github.com/TRose2014/data-structures-and-algorithms#readme"
+}

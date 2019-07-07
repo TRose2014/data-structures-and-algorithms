@@ -29,14 +29,14 @@ describe('Queue with stacks', () => {
     });
 
   });
-    describe('dequeue', () => {
-      it('should pop the first element', () => {
-        queue.enqueue(5);
-        queue.enqueue(6);
-        queue.enqueue(7);
-        let result = queue.dequeue();
+  describe('dequeue', () => {
+    it('should pop the first element', () => {
+      queue.enqueue(5);
+      queue.enqueue(6);
+      queue.enqueue(7);
+      let result = queue.dequeue();
 
-        expect(result).toBe(5);
-      });
+      expect(result).toBe(5);
     });
+  });
 });

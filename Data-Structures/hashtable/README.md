@@ -1,4 +1,5 @@
 # Hashtables
+
 Implement a Hashtable
 
 ## Challenge
@@ -20,3 +21,4 @@ O(1)
 * Contains: takes in the key and returns a boolean, indicating if the key exists in the table already.
 
 * Hash: takes in an arbitrary key and returns an index in the collection.
+

@@ -35,7 +35,7 @@ const salesData = (hours, data) => {
   hours.forEach( (element,index) => {
     const objTemp = {
       sales: `${data[index]} cookies`,
-      time: element
+      time: element,
     };
     formattedData.push(objTemp);
   });
@@ -49,14 +49,14 @@ Write a function named howManyTreats that will return the quantity of treats you
 
 const errands = [
   { store: 'Grocery store',
-    items: [ { name: 'Eggs', quantity: 12 }, { name: 'Milk', quantity: 1 }, { name: 'Apples', quantity: 3 }]
+    items: [ { name: 'Eggs', quantity: 12 }, { name: 'Milk', quantity: 1 }, { name: 'Apples', quantity: 3 }],
   },
   { store: 'Drug store',
-    items: [ { name: 'Toothpaste', quantity: 1 }, { name: 'Toothbrush', quantity: 3 }, { name: 'Mouthwash',quantity: 1 } ]
+    items: [ { name: 'Toothpaste', quantity: 1 }, { name: 'Toothbrush', quantity: 3 }, { name: 'Mouthwash',quantity: 1 } ],
   },
   { store: 'Pet store',
-    items: [ { name: 'Cans of food', quantity: 8 }, { name: 'Treats', quantity: 24 }, { name: 'Leash', quantity: 1 } ]
-  }
+    items: [ { name: 'Cans of food', quantity: 8 }, { name: 'Treats', quantity: 24 }, { name: 'Leash', quantity: 1 } ],
+  },
 ];
 
 const howManyTreats = (arr) => {
@@ -194,7 +194,7 @@ describe('Testing challenge 2', () => {
       { sales: '276 cookies', time: '5 p.m.' },
       { sales: '207 cookies', time: '6 p.m.' },
       { sales: '161 cookies', time: '7 p.m.' },
-      { sales: '169 cookies', time: '8 p.m.' }
+      { sales: '169 cookies', time: '8 p.m.' },
     ]);
 
     expect(salesData(hoursOpen, grandTotal(cookieStores)).length).toStrictEqual(hoursOpen.length);
