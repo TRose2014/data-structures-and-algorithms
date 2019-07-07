@@ -150,15 +150,29 @@ describe('contains method', () => {
 describe('collisions', () => {
   it('should succesfully handle any collisions within the hashtable', () => {
     let hashTable = new HashTable(5);
-    hashTable.add('foo', 55);
+
+    hashTable.add('cat', 55);
     hashTable.add('bbt', 24);
-  
-    console.log(hashTable.buckets);
-    // expect(hashTable).toBe
+    hashTable.print();
+
+    expect(hashTable.buckets[3].head.value[0]).toBe('cat');
+    expect(hashTable.buckets[3].head.value[1]).toBe(55);
+    expect(hashTable.buckets[3].head.next.value[0]).toBe('bbt');
+    expect(hashTable.buckets[3].head.next.value[1]).toBe(24);
 
   });
 
   it('should successfully retrieve a value from a bucket that has a collision', () => {
+
+    let hashTable = new HashTable(5);
+
+    hashTable.add('cat', 55);
+    hashTable.add('bbt', 24);
+    let find = hashTable.get('cat');
+    let find1 =hashTable.get('bbt');
+  
+    expect(find).toBe(55);
+    expect(find1).toBe(24);
 
   });
 });
