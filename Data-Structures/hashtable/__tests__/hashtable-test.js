@@ -54,6 +54,16 @@ describe('hash method', () => {
 });
 
 describe('add method', () => {
+
+  it('should add a key/value to the hashtable resulting in the value being in the data structure', () => {
+    let hashTable = new HashTable(5);
+  
+    hashTable.add('dew', 55);
+
+    expect(hashTable.buckets[0].values()).toEqual([['dew', 55]]);
+   
+  });
+
   it('should throw an error if the same key is added inside the hashtable', () => {
     let hashTable = new HashTable(5);
     hashTable.add('test', 55);
@@ -122,7 +132,7 @@ describe('contains method', () => {
 
   });
 
-  it('should return false if a key is not inside the hashtable', () => {
+  it('should return null if a key is not inside the hashtable', () => {
     let hashTable;
     hashTable = new HashTable(5);
     hashTable.add('test', 3);
@@ -139,6 +149,12 @@ describe('contains method', () => {
 
 describe('collisions', () => {
   it('should succesfully handle any collisions within the hashtable', () => {
+    let hashTable = new HashTable(5);
+    hashTable.add('foo', 55);
+    hashTable.add('bbt', 24);
+  
+    console.log(hashTable.buckets);
+    // expect(hashTable).toBe
 
   });
 
