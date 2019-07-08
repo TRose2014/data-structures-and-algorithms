@@ -8,6 +8,7 @@ const _split = (string) =>{
 };
 
 const repeatedWord = (string) => {
+  if(typeof string !== 'string') throw new Error();
   let hashtable = new Hashtable();
   let arrayWords = _split(string);
   for(let i = 0; i < arrayWords.length; i++){
