@@ -17,8 +17,8 @@ beforeEach(()=> {
 
   HT2 = new HashTable(5);
   HT2.add('tired', 'awake');
-  HT2.add('sad', 'happy');
   HT2.add('stop');
+  HT2.add('sad', 'happy');
   HT2.add('silly', 'serious');
 
 });
@@ -32,10 +32,15 @@ describe('left join function', () => {
   
     expect(result).toThrow();
   });
-  it('should only accept hashtables as its parameters', () => {
-    leftJoin(HT1, HT2);
-    console.log(leftJoin(HT1, HT2));
-  });
 
-  
+  it('should return the left join of two hashtables', () => {
+    let result = [ 
+      [ 'go', 'start', undefined ],
+      [ 'sad', 'depressed', 'happy' ],
+      [ 'tired', 'sleepy', 'awake' ],
+    ];
+
+    expect(leftJoin(HT1, HT2)).toEqual(result);
+
+  });
 });

@@ -2,7 +2,7 @@
 
 let leftJoin = (htLeft, htRight) => {
 
-  if(typeof htLeft === Object || typeof htRight ===  Object) throw new Error;
+  if( !htLeft.buckets || !htRight.buckets) throw new Error;
 
 
   let resultLeft = [];
@@ -13,6 +13,8 @@ let leftJoin = (htLeft, htRight) => {
     content.push(element.values()[0][0]);
 
     content.push(element.values()[0][1]);
+    
+    //compares ht left keys to ht right keys
     content.push(htRight.get(element.values()[0][0]));
 
 
@@ -29,9 +31,10 @@ let leftJoin = (htLeft, htRight) => {
     
     console.log('in left result', resultLeft);
     console.log('in right result', resultRight);
+
   });
 
-  
+  return resultLeft;
 };
 
 module.exports = leftJoin;
