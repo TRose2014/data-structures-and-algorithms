@@ -25,6 +25,11 @@ beforeEach(()=> {
 
 
 describe('left join function', () => {
+  it('should be an instance of a hashtable', () => {
+    expect(HT1).toBeInstanceOf(HashTable);
+    expect(HT2).toBeInstanceOf(HashTable);
+  });
+
   it('should only accept hashtables as its parameters', () => {
     let test = true;
     let number = 3;
