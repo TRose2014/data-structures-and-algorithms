@@ -97,6 +97,7 @@ class HashTable {
     if(!this.buckets[index]) { this.buckets[index] = new LinkedList(); }
 
     //At this point this.buckets[index] is a linked List
+    // eslint-disable-next-line no-useless-catch
     try{
       this.buckets[index].add([key, value]);
     }catch(e){

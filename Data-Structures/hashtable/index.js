@@ -10,5 +10,6 @@ hashTable.add('cat', 42);
 hashTable.add('bbt', 2);
 hashTable.add('foo', 55);
 hashTable.add('crepitate', 24);
-console.log('In console', hashTable.contains('crepitate'));
+// console.log('In console', hashTable.contains('crepitate'));
+hashTable.add('hi', 'a');
 hashTable.print();
