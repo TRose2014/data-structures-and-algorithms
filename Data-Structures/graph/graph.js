@@ -1,6 +1,8 @@
 'use strict';
 
 // const util = require('util');
+let Queue = require('../stacksAndQueues/queues/queues');
+
 
 class Vertex {
   constructor(value){
@@ -75,7 +77,7 @@ class Graph{
     while(stack.length){
       const currentVertex = stack.pop();
 
-      console.log(currentVertex, goalVertex);
+      // console.log(currentVertex, goalVertex);
       if(currentVertex === goalVertex){
         return parentPath;
       }
@@ -100,6 +102,36 @@ class Graph{
     }
   }
 
+  breadthFirst(startingNode){
+    if(!startingNode){
+      return 'Vertex not defined';
+    }
+    let visited = [];
+    let queue = new Queue();
+  
+    visited.push(startingNode.value);
+    queue.enqueue(startingNode);
+    console.log(startingNode.value);
+  
+    while (queue.peek()) {
+      console.log('in while loop');
+      let queueElement = queue.dequeue();
+  
+      let list = this._adjacencyList.get(queueElement);
+      for (let i in list) {
+        let item = list[i].vertex.value;
+        if (!visited.includes(item)) {
+          visited.push(item);
+          console.log(item);
+          console.log(visited);
+          queue.enqueue(item);
+        }
+      }
+    }
+    console.log(visited);
+    return visited;
+  }
+
 
   // printAdjacencyList(){
   //   //Iterate over all keys in map
@@ -120,32 +152,11 @@ class Graph{
   // Returns all of the nodes in the graph as a collection (set, list, or similar)
 
 
-  // Size()
-  // Returns the total number of nodes in the graph
+  size(){
+    // Returns the total number of nodes in the graph
+    return this._adjacencyList.size;
 
-
-  // AddNode()
-  // Adds a new node to the graph
-  // Takes in the value of that node
-  // Returns the added node
-
-
-  // AddEdge()
-  // Adds a new edge between two nodes in the graph
-  // Include the ability to have a “weight”
-  // Takes in the two nodes to be connected by the edge
-  // Both nodes should already be in the Graph
-
-
-
-  // GetNeighbors()
-  // Returns a collection of nodes connected to the given node
-  // Takes in a given node
-  // Include the weight of the connection in the returned collection
-
-
-  // Size()
-  // Returns the total number of nodes in the graph
+  }
 
 }
 
