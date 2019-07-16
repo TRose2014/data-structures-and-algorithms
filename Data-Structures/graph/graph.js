@@ -1,7 +1,8 @@
+/* eslint-disable indent */
 'use strict';
 
 // const util = require('util');
-let Queue = require('../stacksAndQueues/queues/queues');
+let Queue = require('./queue');
 
 
 class Vertex {
@@ -59,7 +60,7 @@ class Graph{
 
   }
 
-  getNeighbors(vertex){
+  getitembors(vertex){
     if(!this._adjacencyList.has(vertex)){
       throw new Error('Invaild vertex', vertex);
     }
@@ -82,54 +83,50 @@ class Graph{
         return parentPath;
       }
 
-      const neighbors = this.getNeighbors(currentVertex);
+      const itembors = this.getitembors(currentVertex);
 
       //Depth first search
-      for(let edge of neighbors){
-        const neighborVertex = edge.vertex;
+      for(let edge of itembors){
+        const itemborVertex = edge.vertex;
 
         //Checks to see if vertext has been visited
-        if(visitedVerticies.has(neighborVertex)){
+        if(visitedVerticies.has(itemborVertex)){
           //if it has, keep it going
           continue;
         }else{
-          visitedVerticies.add(neighborVertex);
+          visitedVerticies.add(itemborVertex);
         }
-        stack.push(neighborVertex);
-        parentPath.set(neighborVertex, currentVertex);
+        stack.push(itemborVertex);
+        parentPath.set(itemborVertex, currentVertex);
       }
 
     }
   }
 
-  breadthFirst(startingNode){
-    if(!startingNode){
+  breadthFirst(startingVertex){
+    if(!startingVertex){
       return 'Vertex not defined';
     }
     let visited = [];
     let queue = new Queue();
-  
-    visited.push(startingNode.value);
-    queue.enqueue(startingNode);
-    console.log(startingNode.value);
-  
+
+    visited.push(startingVertex);
+    queue.enqueue(startingVertex);
+
     while (queue.peek()) {
-      console.log('in while loop');
       let queueElement = queue.dequeue();
-  
+
       let list = this._adjacencyList.get(queueElement);
       for (let i in list) {
-        let item = list[i].vertex.value;
+        let item = list[i];
         if (!visited.includes(item)) {
-          visited.push(item);
-          console.log(item);
-          console.log(visited);
+          visited.push(item.vertex);
           queue.enqueue(item);
         }
       }
     }
-    console.log(visited);
-    return visited;
+    let keys = visited.map(key => key.value);
+    return keys;
   }
 
 
@@ -187,7 +184,7 @@ graph.addDirectedEdge(three, zero);
 graph.addDirectedEdge(zero, nine);
 graph.addDirectedEdge(nine, eight);
 
-console.log(graph.getNeighbors(seven));
+console.log(graph.getitembors(seven));
 // console.log(util.inspect(graph.pathTo(eight, seven)));
 console.log(graph.pathTo(six, zero));
 

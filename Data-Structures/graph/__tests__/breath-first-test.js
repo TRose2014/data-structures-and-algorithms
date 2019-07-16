@@ -1,7 +1,6 @@
 'use strict';
 
 let Graph = require('../graph').Graph;
-let Edge = require('../graph').Edge;
 let Vertex = require('../graph').Vertex;
 
 
@@ -23,16 +22,21 @@ describe('Test breath first function', () => {
     graph.addVertex(matt);
     graph.addVertex(mike);
 
-    graph.addDirectedEdge(felipe, matt);
+    graph.addDirectedEdge(matt, felipe);
     graph.addDirectedEdge(matt, mike);
 
-    console.log(graph._adjacencyList);
+    let result = graph.breadthFirst(matt);
 
-    let result = graph.breadthFirst(felipe);
-    expect(result).toBe(['felipe', 'matt', 'mike']);
+    expect(result).toEqual([ 'matt', 'felipe', 'mike' ]);
+  });
 
+  it('should return an array with all nodes', () => {
+    let graph = new Graph();
 
+    let test = new Vertex('test');
 
-
+    graph.addVertex(test);
+    let result = graph.breadthFirst(test);
+    expect(result).toEqual(['test']);
   });
 });
