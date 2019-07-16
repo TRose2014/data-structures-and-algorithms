@@ -1,6 +1,9 @@
+/* eslint-disable indent */
 'use strict';
 
 // const util = require('util');
+let Queue = require('./queue');
+
 
 class Vertex {
   constructor(value){
@@ -57,14 +60,14 @@ class Graph{
 
   }
 
-  getNeighbors(vertex){
+  getitembors(vertex){
     if(!this._adjacencyList.has(vertex)){
       throw new Error('Invaild vertex', vertex);
     }
     return [...this._adjacencyList.get(vertex)];
   }
-
-  pathTo(startVertex, goalVertex){
+  
+pathTo(startVertex, goalVertex){
     const stack = [];
     const visitedVerticies = new Set();
     const parentPath = new Map();
@@ -100,6 +103,32 @@ class Graph{
     }
   }
 
+  breadthFirst(startingVertex){
+    if(!startingVertex){
+      return 'Vertex not defined';
+    }
+    let visited = [];
+    let queue = new Queue();
+
+    visited.push(startingVertex);
+    queue.enqueue(startingVertex);
+
+    while (queue.peek()) {
+      let queueElement = queue.dequeue();
+
+      let list = this._adjacencyList.get(queueElement);
+      for (let i in list) {
+        let item = list[i];
+        if (!visited.includes(item)) {
+          visited.push(item.vertex);
+          queue.enqueue(item);
+        }
+      }
+    }
+    let keys = visited.map(key => key.value);
+    return keys;
+  }
+
 
   // printAdjacencyList(){
   //   //Iterate over all keys in map
@@ -119,10 +148,10 @@ class Graph{
   // GetNodes()
   // Returns all of the nodes in the graph as a collection (set, list, or similar)
 
-
-  Size(){
+  size(){
     // Returns the total number of nodes in the graph
     return this._adjacencyList.size;
+
   }
 }
 
@@ -153,7 +182,7 @@ graph.addDirectedEdge(three, zero);
 graph.addDirectedEdge(zero, nine);
 graph.addDirectedEdge(nine, eight);
 
-console.log(graph.getNeighbors(seven));
+console.log(graph.getitembors(seven));
 // console.log(util.inspect(graph.pathTo(eight, seven)));
 console.log(graph.pathTo(six, zero));
 

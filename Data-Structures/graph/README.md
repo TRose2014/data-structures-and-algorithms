@@ -32,3 +32,19 @@ Implement your own Graph. The graph should be represented as an adjacency list, 
   * Include the weight of the connection in the returned collection
 * Size()
   * Returns the total number of nodes in the graph
+
+
+
+  # Breadth-First 
+
+  # Challenge Summary
+Implement a breadth-first traversal on a graph.
+
+## Challenge Description
+Extend your graph object with a breadth-first traversal method that accepts a starting node. Without utilizing any of the built-in methods available to your language, return a collection of nodes in the order they were visited. Display the collection.
+
+## Approach & Efficiency
+O(n)
+
+## Solution
+![UML](./assets/CC-36.JPG)
