@@ -1,56 +1,24 @@
 'use strict';
 
-const Graph = require('./graph').Graph;
-const Vertex = require('./graph').Vertex;
-
-// function getEdges (destinations, graph) {
-//   // Error checking
-//   for(let location in destinations){
-//     if(this._adjacencyList.has(location)){
-//       throw new Error('A location does not match our records');
-//     }
-//   }
-
-//   let startLocation;
-//   let vertexLocation = graph.getNodes();
-//   let total = 0;
-//   for(let location of vertexLocation){
-//     if (location.value === destinations[0]){
-//       startLocation = location;
-//     }
-//   }
-
-//   for(let i = 1; i < destinations.length; i++){
-//     let neighbors = graph.getNeighbors(startLocation);
-//     for (let location of neighbors){
-//       if(location.vertex.value === destinations[i]){
-//         startLocation = location.vertex;
-//         total += location.weight;
-//       }
-//     }
-//   }
-//   return total;
-// }
-
-function getEdges(graph, array){
-  let counter = 0;
-  let current;
-  let graphArray = graph.getNodes();
-  for(let i = 0; i < graphArray.length; i++){
-    if(graphArray[i].value === array[0]){
-      current = graphArray[i];
+function getEdge(graph, array){
+  let total = 0;
+  let startingLocation;
+  let vertexLocation = graph.getNodes();
+  for(let i = 0; i < vertexLocation.length; i++){
+    if(vertexLocation[i].value === array[0]){
+      startingLocation = vertexLocation[i];
     }
   }
   for(let i = 1; i < array.length; i++){
 
-    let neighbor = graph.getNeighbors(current);
+    let neighbor = graph.getNeighbors(startingLocation);
     
     let isFound = false;
     for(let j = 0; j < neighbor.length; j++){
       if(neighbor[j].vertex.value === array[i]){
-        counter += neighbor[j].weight;
+        total += neighbor[j].weight;
         isFound = true;
-        current = neighbor[j].vertex;
+        startingLocation = neighbor[j].vertex;
         break;
       }
     }
@@ -58,29 +26,30 @@ function getEdges(graph, array){
       return false + ' $0';
     }
   }
-  return `true $${counter}`;
+  return `true $${total}`;
 }
 
+
+
+const Graph = require('./graph').Graph;
+
+
 let graph = new Graph();
-
-let gotham = new Vertex('gotham');
-let palletTown = new Vertex('Pallet Town');
-let bikiniBottom = new Vertex('Bikini Bottom');
-let stardew = new Vertex('Stardew');
-
-graph.addVertex(gotham);
-graph.addVertex(palletTown);
-graph.addVertex(bikiniBottom);
-graph.addVertex(stardew);
-    
-graph.addDirectedEdge(bikiniBottom, gotham, 27);
-graph.addDirectedEdge(gotham, palletTown, 42);
-graph.addDirectedEdge(palletTown, stardew, 80);
+let seattle = graph.addNode('Seattle');
+let bend = graph.addNode('Bend');
+let LA = graph.addNode('LA');
+let NY = graph.addNode('New York');
+// console.log(seattle);
+graph.addBiDirectionalEdge(seattle, bend, 22);
+graph.addBiDirectionalEdge(seattle, NY, 13);
+graph.addBiDirectionalEdge(NY, LA, 120);
+graph.addBiDirectionalEdge(bend, NY, 30);
+graph.addBiDirectionalEdge(bend, LA, 30);
 
 let cityArr = ['Seattle', 'New York', 'LA', 'Seattle'];
 let cityArr2 = ['Seattle', 'Bend', 'LA'];
 
-console.log(getEdges(cityArr, graph ));
-console.log(getEdges(cityArr2, graph));
+console.log(getEdge(graph, cityArr));
+console.log(getEdge(graph, cityArr2));
 
-module.exports = getEdges;
+module.exports = getEdge;

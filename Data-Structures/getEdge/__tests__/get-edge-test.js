@@ -1,33 +1,43 @@
 const Graph = require('../graph').Graph;
-const Vertex = require('../graph').Vertex;
-const Edge = require('../graph').Edge;
-let getDestinations = require('../get-edge');
+let getEdge = require('../get-edge');
 
 describe('get destination function', () => {
+
+  let graph;
+  beforeEach(()=> {
+    graph = new Graph();
+
+    let gotham = graph.addNode('Gotham');
+    let palletTown = graph.addNode('Pallet Town');
+    let bikiniBottom = graph.addNode('Bikini Bottom');
+    let stardew = graph.addNode('Stardew');
+    // console.log(gotham);
+    graph.addBiDirectionalEdge(gotham, palletTown, 32);
+    graph.addBiDirectionalEdge(gotham, stardew, 43);
+    graph.addBiDirectionalEdge(stardew, bikiniBottom, 50);
+  });
+
+
   it('should take in an array and a graph', () => {
 
-    let graph = new Graph();
-    let array = ['bikiniBotton', 'gotham', 'palletTown', 'stardew'];
+    let array1 = ['Gotham', 'Stardew', 'Bikini Bottom'];
 
-    // let gotham = new Vertex('gotham');
-    // let palletTown = new Vertex('Pallet Town');
-    // let bikiniBottom = new Vertex('Bikini Bottom');
-    // let stardew = new Vertex('Stardew');
+    let result = getEdge(graph, array1);
 
-    // graph.addVertex(gotham);
-    // graph.addVertex(palletTown);
-    // graph.addVertex(bikiniBottom);
-    // graph.addVertex(stardew);
-    
-    // graph.addDirectedEdge(bikiniBottom, gotham, 27);
-    // graph.addDirectedEdge(gotham, palletTown, 42);
-    // graph.addDirectedEdge(palletTown, stardew, 80);
+    expect(result).toBeTruthy();
+  });
+  it('should return false and $0 if there is not possible path', () => {
 
-    // console.log(graph);
-    // expect(graph).toBeTruthy();
-    let result = getDestinations(array, graph);
-    console.log(getDestinations(array, graph));
+    let array2 = ['Gotham', 'Pallet Town', 'Bikini Bottom'];
+    let result = getEdge(graph, array2);
 
+    expect(result).toBe( 'false $0');
+  });
+  it('should return true and the total amount if there is a possible path', () => {
 
+    let array1 = ['Gotham', 'Stardew', 'Bikini Bottom'];
+    let result = getEdge(graph, array1);
+
+    expect(result).toBe( 'true $93');
   });
 });
