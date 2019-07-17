@@ -8,4 +8,6 @@ Write a function based on the specifications above, which takes in a graph, and 
 O(n)
 
 ## Solution
-![UML-Diagram](./assets/Whiteboard-37);
+![UML-Diagram](./assets/Whiteboard-37.JPG)
+
+### Worked with Felipe Delattore extensively on this challenge
