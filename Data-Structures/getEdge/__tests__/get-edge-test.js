@@ -11,12 +11,11 @@ describe('get destination function', () => {
     let palletTown = graph.addNode('Pallet Town');
     let bikiniBottom = graph.addNode('Bikini Bottom');
     let stardew = graph.addNode('Stardew');
-    // console.log(gotham);
+
     graph.addBiDirectionalEdge(gotham, palletTown, 32);
     graph.addBiDirectionalEdge(gotham, stardew, 43);
     graph.addBiDirectionalEdge(stardew, bikiniBottom, 50);
   });
-
 
   it('should take in an array and a graph', () => {
 
@@ -26,6 +25,7 @@ describe('get destination function', () => {
 
     expect(result).toBeTruthy();
   });
+
   it('should return false and $0 if there is not possible path', () => {
 
     let array2 = ['Gotham', 'Pallet Town', 'Bikini Bottom'];
@@ -33,6 +33,7 @@ describe('get destination function', () => {
 
     expect(result).toBe( 'false $0');
   });
+
   it('should return true and the total amount if there is a possible path', () => {
 
     let array1 = ['Gotham', 'Stardew', 'Bikini Bottom'];
@@ -40,4 +41,12 @@ describe('get destination function', () => {
 
     expect(result).toBe( 'true $93');
   });
+
+  it('should return an error if no graph or array was provided', () => {
+
+    let result = getEdge(graph);
+
+    expect(result).toBe( 'Info not provided');
+  });
+
 });

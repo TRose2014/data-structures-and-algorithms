@@ -1,7 +1,5 @@
 'use strict';
 
-// const util = require('util');
-
 class Vertex {
   constructor(value){
     this.value = value;
@@ -124,14 +122,9 @@ class Graph {
     return answerArray;
   }
 
-
-
-
   size(){
-    if(this.numberOfNodes === 0){
-      return null;
-    }
-    return this.numberOfNodes;
+    // Returns the total number of nodes in the graph
+    return this._adjacencyList.size;
   }
 }
 

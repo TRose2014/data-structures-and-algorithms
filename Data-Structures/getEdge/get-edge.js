@@ -1,6 +1,9 @@
 'use strict';
 
 function getEdge(graph, array){
+  if(!graph || !array){
+    return 'Info not provided';
+  }
   let total = 0;
   let startingLocation;
   let vertexLocation = graph.getNodes();
