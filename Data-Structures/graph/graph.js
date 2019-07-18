@@ -1,6 +1,9 @@
+/* eslint-disable indent */
 'use strict';
 
 // const util = require('util');
+let Queue = require('./queue');
+
 
 class Vertex {
   constructor(value){
@@ -57,7 +60,7 @@ class Graph{
 
   }
 
-  getNeighbors(vertex){
+  getitembors(vertex){
     if(!this._adjacencyList.has(vertex)){
       throw new Error('Invaild vertex', vertex);
     }
@@ -75,29 +78,56 @@ class Graph{
     while(stack.length){
       const currentVertex = stack.pop();
 
-      console.log(currentVertex, goalVertex);
+      // console.log(currentVertex, goalVertex);
       if(currentVertex === goalVertex){
         return parentPath;
       }
 
-      const neighbors = this.getNeighbors(currentVertex);
+      const itembors = this.getitembors(currentVertex);
 
       //Depth first search
-      for(let edge of neighbors){
-        const neighborVertex = edge.vertex;
+      for(let edge of itembors){
+        const itemborVertex = edge.vertex;
 
-        //Checks to see if vertex has been visited
-        if(visitedVerticies.has(neighborVertex)){
+        //Checks to see if vertext has been visited
+        if(visitedVerticies.has(itemborVertex)){
+
           //if it has, keep it going
           continue;
         }else{
-          visitedVerticies.add(neighborVertex);
+          visitedVerticies.add(itemborVertex);
         }
-        stack.push(neighborVertex);
-        parentPath.set(neighborVertex, currentVertex);
+        stack.push(itemborVertex);
+        parentPath.set(itemborVertex, currentVertex);
       }
 
     }
+  }
+
+  breadthFirst(startingVertex){
+    if(!startingVertex){
+      return 'Vertex not defined';
+    }
+    let visited = [];
+    let queue = new Queue();
+
+    visited.push(startingVertex);
+    queue.enqueue(startingVertex);
+
+    while (queue.peek()) {
+      let queueElement = queue.dequeue();
+
+      let list = this._adjacencyList.get(queueElement);
+      for (let i in list) {
+        let item = list[i];
+        if (!visited.includes(item)) {
+          visited.push(item.vertex);
+          queue.enqueue(item);
+        }
+      }
+    }
+    let keys = visited.map(key => key.value);
+    return keys;
   }
 
 
@@ -119,10 +149,10 @@ class Graph{
   // GetNodes()
   // Returns all of the nodes in the graph as a collection (set, list, or similar)
 
-
-  Size(){
+  size(){
     // Returns the total number of nodes in the graph
     return this._adjacencyList.size;
+
   }
 }
 
@@ -153,7 +183,7 @@ graph.addDirectedEdge(three, zero);
 graph.addDirectedEdge(zero, nine);
 graph.addDirectedEdge(nine, eight);
 
-console.log(graph.getNeighbors(seven));
+console.log(graph.getitembors(seven));
 // console.log(util.inspect(graph.pathTo(eight, seven)));
 console.log(graph.pathTo(six, zero));
 
