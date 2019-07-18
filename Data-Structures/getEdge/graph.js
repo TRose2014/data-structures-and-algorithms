@@ -33,15 +33,15 @@ class Graph {
 
   addEdge(startVertex, endVertex, weight = 0){
     if(!this._adjacencyList.has(startVertex) || !this._adjacencyList.has(endVertex)){
-      throw new Error('ERROR: invalid vertices');
+      throw new Error('Invalid vertices');
     }
     const adjacencies = this._adjacencyList.get(startVertex);
     adjacencies.push(new Edge(endVertex, weight));
   }
 
-  addBiDirectionalEdge(vertex_a, vertex_b, weight = 0){
-    this.addEdge(vertex_a, vertex_b, weight);
-    this.addEdge(vertex_b, vertex_a, weight);
+  addBiDirectionalEdge(vertexA, vertexB, weight = 0){
+    this.addEdge(vertexA, vertexB, weight);
+    this.addEdge(vertexB, vertexA, weight);
   }
   
   getNodes() {
@@ -54,8 +54,7 @@ class Graph {
 
   getNeighbors(vertex){
     if(!this._adjacencyList.has(vertex)){
-      // console.log(vertex);
-      throw new Error('ERROR: invalid vertex', vertex);
+      throw new Error('Invalid vertex', vertex);
     }
     return [...this._adjacencyList.get(vertex)];
   }
