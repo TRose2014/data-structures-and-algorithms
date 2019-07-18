@@ -1,9 +1,6 @@
-/* eslint-disable indent */
 'use strict';
 
 // const util = require('util');
-let Queue = require('./queue');
-
 
 class Vertex {
   constructor(value){
@@ -53,14 +50,12 @@ class Graph{
 
   }
 
-  addBidirectionalEdge(vertexA, vertexB, weight){
-    //Adding two directional edges for both verticies so they can each access each other
-    this.addBidirectionalEdge(vertexA, vertexB, weight);
-    this.addBidirectionalEdge(vertexB, vertexA, weight);
-
+  addBidirectionalEdge(vertex_a, vertex_b, weight = 0){
+    this.addDirectedEdge(vertex_a, vertex_b, weight);
+    this.addDirectedEdge(vertex_b, vertex_a, weight);
   }
 
-  getitembors(vertex){
+  getNeighbors(vertex){
     if(!this._adjacencyList.has(vertex)){
       throw new Error('Invaild vertex', vertex);
     }
@@ -83,51 +78,24 @@ class Graph{
         return parentPath;
       }
 
-      const itembors = this.getitembors(currentVertex);
+      const neighbors = this.getNeighbors(currentVertex);
 
       //Depth first search
-      for(let edge of itembors){
-        const itemborVertex = edge.vertex;
+      for(let edge of neighbors){
+        const neighborVertex = edge.vertex;
 
-        //Checks to see if vertext has been visited
-        if(visitedVerticies.has(itemborVertex)){
-
+        //Checks to see if vertex has been visited
+        if(visitedVerticies.has(neighborVertex)){
           //if it has, keep it going
           continue;
         }else{
-          visitedVerticies.add(itemborVertex);
+          visitedVerticies.add(neighborVertex);
         }
-        stack.push(itemborVertex);
-        parentPath.set(itemborVertex, currentVertex);
+        stack.push(neighborVertex);
+        parentPath.set(neighborVertex, currentVertex);
       }
 
     }
-  }
-
-  breadthFirst(startingVertex){
-    if(!startingVertex){
-      return 'Vertex not defined';
-    }
-    let visited = [];
-    let queue = new Queue();
-
-    visited.push(startingVertex);
-    queue.enqueue(startingVertex);
-
-    while (queue.peek()) {
-      let queueElement = queue.dequeue();
-
-      let list = this._adjacencyList.get(queueElement);
-      for (let i in list) {
-        let item = list[i];
-        if (!visited.includes(item)) {
-          visited.push(item.vertex);
-          queue.enqueue(item);
-        }
-      }
-    }
-    let keys = visited.map(key => key.value);
-    return keys;
   }
 
 
@@ -149,10 +117,10 @@ class Graph{
   // GetNodes()
   // Returns all of the nodes in the graph as a collection (set, list, or similar)
 
-  size(){
+
+  Size(){
     // Returns the total number of nodes in the graph
     return this._adjacencyList.size;
-
   }
 }
 
@@ -183,8 +151,8 @@ graph.addDirectedEdge(three, zero);
 graph.addDirectedEdge(zero, nine);
 graph.addDirectedEdge(nine, eight);
 
-console.log(graph.getitembors(seven));
+// console.log(graph.getNeighbors(seven));
 // console.log(util.inspect(graph.pathTo(eight, seven)));
-console.log(graph.pathTo(six, zero));
+// console.log(graph.pathTo(six, zero));
 
 module.exports = {Graph, Edge, Vertex};
