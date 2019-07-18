@@ -33,15 +33,15 @@ class Graph {
 
   addEdge(startVertex, endVertex, weight = 0){
     if(!this._adjacencyList.has(startVertex) || !this._adjacencyList.has(endVertex)){
-      throw new Error('Invalid vertices');
+      throw new Error('ERROR: invalid vertices');
     }
     const adjacencies = this._adjacencyList.get(startVertex);
     adjacencies.push(new Edge(endVertex, weight));
   }
 
-  addBiDirectionalEdge(vertexA, vertexB, weight = 0){
-    this.addEdge(vertexA, vertexB, weight);
-    this.addEdge(vertexB, vertexA, weight);
+  addBiDirectionalEdge(vertex_a, vertex_b, weight = 0){
+    this.addEdge(vertex_a, vertex_b, weight);
+    this.addEdge(vertex_b, vertex_a, weight);
   }
   
   getNodes() {
@@ -54,12 +54,13 @@ class Graph {
 
   getNeighbors(vertex){
     if(!this._adjacencyList.has(vertex)){
-      throw new Error('Invalid vertex', vertex);
+      // console.log(vertex);
+      throw new Error('ERROR: invalid vertex', vertex);
     }
     return [...this._adjacencyList.get(vertex)];
   }
-  
-pathTo(startVertex, goalVertex){
+
+  pathTo(startVertex, goalVertex){
     const stack = [];
     const visitedVertices = new Set();
     const parentPath = new Array();
@@ -77,20 +78,14 @@ pathTo(startVertex, goalVertex){
 
       const neighbors = this.getNeighbors(currentVertex);
 
-      //Depth first search
       for(let edge of neighbors){
         const neighborVertex = edge.vertex;
 
-        //Checks to see if vertex has been visited
-        if(visitedVerticies.has(neighborVertex)){
-          //if it has, keep it going
+        if(visitedVertices.has(neighborVertex)){
           continue;
         }else{
-          visitedVerticies.add(neighborVertex);
+          visitedVertices.add(neighborVertex);
         }
-        stack.push(neighborVertex);
-        parentPath.set(neighborVertex, currentVertex);
-      }
 
         stack.push(neighborVertex);
         parentPath.push(neighborVertex, currentVertex);
