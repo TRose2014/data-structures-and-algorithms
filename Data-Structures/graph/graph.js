@@ -58,8 +58,8 @@ class Graph {
     }
     return [...this._adjacencyList.get(vertex)];
   }
-
-  pathTo(startVertex, goalVertex){
+  
+pathTo(startVertex, goalVertex){
     const stack = [];
     const visitedVertices = new Set();
     const parentPath = new Array();
@@ -77,14 +77,20 @@ class Graph {
 
       const neighbors = this.getNeighbors(currentVertex);
 
+      //Depth first search
       for(let edge of neighbors){
         const neighborVertex = edge.vertex;
 
-        if(visitedVertices.has(neighborVertex)){
+        //Checks to see if vertex has been visited
+        if(visitedVerticies.has(neighborVertex)){
+          //if it has, keep it going
           continue;
         }else{
-          visitedVertices.add(neighborVertex);
+          visitedVerticies.add(neighborVertex);
         }
+        stack.push(neighborVertex);
+        parentPath.set(neighborVertex, currentVertex);
+      }
 
         stack.push(neighborVertex);
         parentPath.push(neighborVertex, currentVertex);
