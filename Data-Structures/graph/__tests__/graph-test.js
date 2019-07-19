@@ -150,8 +150,6 @@ describe('Implementing the Graph', () => {
       graph.addDirectedEdge(six, seven);
       graph.addDirectedEdge(seven, five);
 
-      let result = () => graph.getNeighbors();
-
       expect(graph.getNeighbors()).toBe('Invaild vertex');
 
     });
