@@ -1,7 +1,5 @@
 'use strict';
 
-// const util = require('util');
-
 class Vertex {
   constructor(value){
     this.value = value;
@@ -58,8 +56,8 @@ class Graph{
   }
 
   getNeighbors(vertex){
-    if(!this._adjacencyList.has(vertex)){
-      throw new Error('Invaild vertex', vertex);
+    if(!this._adjacencyList.has(vertex) || !vertex){
+      return ('Invaild vertex');
     }
     return [...this._adjacencyList.get(vertex)];
   }
@@ -101,28 +99,20 @@ class Graph{
   }
 
 
-  // printAdjacencyList(){
-  //   //Iterate over all keys in map
-  //   //For each key, print to screen
-  //   //Print vertex in all edges
-
-  //   let keys = this._adjacencyList.keys();
-
-  //   for(let value of keys of this.adjacencyList){
-
+  getNodes(){
+    let nodes = [ ...this._adjacencyList.keys() ];
+    return nodes;
+  }
   
 
-  //   }
-
-  // }
-
-  // GetNodes()
-  // Returns all of the nodes in the graph as a collection (set, list, or similar)
-
-
-  Size(){
-    // Returns the total number of nodes in the graph
+  size(){
     return this._adjacencyList.size;
+  }
+
+  printGraph(){
+    for (let [key, value] of this._adjacencyList) {
+      console.log(key.value, value);
+    }
   }
 }
 
