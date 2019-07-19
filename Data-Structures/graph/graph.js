@@ -6,66 +6,69 @@ class Vertex {
   }
 }
 
-class Edge {
+class Edge{
   constructor(vertex, weight){
     this.weight = weight || 0;
     this.vertex = vertex;
+
   }
 }
 
-
-class Graph {
-  constructor() {
+class Graph{
+  constructor(){
+    //Map = a hashtable that is not hashing
     this._adjacencyList = new Map();
-    this.numberOfNodes = 0;
-  }
+    this._vertex = new Vertex();
 
-  addNode(value){
-    let newNode = new Vertex(value);
-    this.addVertex(newNode);
-    return newNode;
+  }
+  addValue(value){
+    if (!value){
+      return null; 
+    }else{
+      let vertex = new Vertex(value);
+      this.addVertex(vertex);
+    }
   }
 
   addVertex(vertex){
     this._adjacencyList.set(vertex, []);
-    this.numberOfNodes += 1;
+
   }
 
-  addEdge(startVertex, endVertex, weight = 0){
+  addDirectedEdge(startVertex, endVertex, weight){
     if(!this._adjacencyList.has(startVertex) || !this._adjacencyList.has(endVertex)){
-      throw new Error('Invalid vertices');
+      throw new Error('Invalid Verticies');
+
     }
     const adjacencies = this._adjacencyList.get(startVertex);
+    
+    //attaches the startVertex to the endVertex with the edge
     adjacencies.push(new Edge(endVertex, weight));
+
+
   }
 
-  addBiDirectionalEdge(vertexA, vertexB, weight = 0){
-    this.addEdge(vertexA, vertexB, weight);
-    this.addEdge(vertexB, vertexA, weight);
-  }
-  
-  getNodes() {
-    if(this.numberOfNodes !== 0){
-      return [...this._adjacencyList.keys()];
-    }else{
-      return null;
-    }
+  addBidirectionalEdge(vertexA, vertexB, weight){
+    //Adding two directional edges for both verticies so they can each access each other
+    this.addBidirectionalEdge(vertexA, vertexB, weight);
+    this.addBidirectionalEdge(vertexB, vertexA, weight);
+
   }
 
   getNeighbors(vertex){
-    if(!this._adjacencyList.has(vertex)){
-      throw new Error('Invalid vertex', vertex);
+    if(!this._adjacencyList.has(vertex) || !vertex){
+      return ('Invaild vertex');
     }
     return [...this._adjacencyList.get(vertex)];
   }
-  
-pathTo(startVertex, goalVertex){
+
+  pathTo(startVertex, goalVertex){
     const stack = [];
-    const visitedVertices = new Set();
-    const parentPath = new Array();
+    const visitedVerticies = new Set();
+    const parentPath = new Map();
 
     stack.push(startVertex);
-    visitedVertices.add(startVertex);
+    visitedVerticies.add(startVertex);
 
     while(stack.length){
       const currentVertex = stack.pop();
@@ -92,45 +95,56 @@ pathTo(startVertex, goalVertex){
         parentPath.set(neighborVertex, currentVertex);
       }
 
-        stack.push(neighborVertex);
-        parentPath.push(neighborVertex, currentVertex);
-      }
     }
   }
 
-  breadthFirst(startNode){
-    if(this.numberOfNodes === 0){
-      return null;
-    }
 
-    let visitedSet = new Set();
-    let answerArray = [];
-    let queue = [];
-    queue.push(startNode);
-    visitedSet.add(startNode);
-
-    while(queue.length){
-      let deQ = queue.shift();
-      answerArray.push(deQ);
-      visitedSet.add(deQ);
-      const neighbors = this.getNeighbors(deQ);
-      for(let j of neighbors){
-        let neighbor = j.vertex;
-        if(visitedSet.has(neighbor)){
-          continue;
-        }else{
-          visitedSet.add(neighbor);
-        }
-        queue.push(neighbor);
-      }
-    }
-    return answerArray;
+  getNodes(){
+    let nodes = [ ...this._adjacencyList.keys() ];
+    return nodes;
   }
+  
 
   size(){
-    // Returns the total number of nodes in the graph
     return this._adjacencyList.size;
+  }
+
+  printGraph(){
+    for (let [key, value] of this._adjacencyList) {
+      console.log(key.value, value);
+    }
   }
 }
 
-module.exports = {Graph, Vertex, Edge};
+const graph = new Graph();
+
+const eight = new Vertex(8);
+const six = new Vertex(6);
+const seven = new Vertex(7);
+const five = new Vertex(5);
+const three = new Vertex(3);
+const zero = new Vertex(0);
+const nine = new Vertex(9);
+
+graph.addVertex(eight);
+graph.addVertex(six);
+graph.addVertex(seven);
+graph.addVertex(five);
+graph.addVertex(three);
+graph.addVertex(zero);
+graph.addVertex(nine);
+
+graph.addDirectedEdge(eight, six);
+graph.addDirectedEdge(eight, five);
+graph.addDirectedEdge(six, seven);
+graph.addDirectedEdge(seven, five);
+graph.addDirectedEdge(five, three);
+graph.addDirectedEdge(three, zero);
+graph.addDirectedEdge(zero, nine);
+graph.addDirectedEdge(nine, eight);
+
+console.log(graph.getNeighbors(seven));
+// console.log(util.inspect(graph.pathTo(eight, seven)));
+console.log(graph.pathTo(six, zero));
+
+module.exports = {Graph, Edge, Vertex};
